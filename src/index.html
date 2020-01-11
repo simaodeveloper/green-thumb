@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GreenThumb</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <div class="stage" data-stage>
+      <div class="step step--active" data-stage-step="0">
+        <button data-stage-command="next">Start</button>
+      </div>
+
+      <div class="step" data-stage-step="1">
+        <button data-stage-command="prev">Home</button>
+        <button data-stage-command="next">Next</button>
+      </div>
+
+      <div class="step" data-stage-step="2">
+        <button data-stage-command="prev">Prev</button>
+        <button data-stage-command="next">Next</button>
+      </div>
+
+      <div class="step" data-stage-step="3">
+        <button data-stage-command="prev">Prev</button>
+        <button data-stage-command="next">Next</button>
+      </div>
+
+      <div class="step" data-stage-step="4">
+        <button data-stage-command="prev">Prev</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="scripts/app.js" type="module"></script>
+</body>
+</html>
