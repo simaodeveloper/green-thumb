@@ -1,4 +1,4 @@
-#### 1° Dia - Proof od Concept
+#### 1° Dia - Proof of Concept
 
 - Criei uma _POC_ para definir a arquitetura da aplicação, onde haverá um _Stage_
   que controlará os _Steps_, cada _Step_ terá seu próprio _Controller_;
