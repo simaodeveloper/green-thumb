@@ -35,3 +35,11 @@
 #### 7° Dia - CI / CD
 - Configurei o Travis CI para realizar integração
   continua e deploy continuo;
+
+#### 8° Dia - PWA
+
+- Verificar a possibilidade de adicionar PWA;
+
+#### 9° Dia - Acessibilidade e SEO
+
+- Trabalhar com WAI-ARIA e JSON-LD;
