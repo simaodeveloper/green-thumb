@@ -7,12 +7,10 @@
 
 #### 2° Dia - Layout
 
-- Criei 3 dominios no surge.sh, um para produção, outro para staging e outro para QA. Todos
+- Criei 2 dominios no surge.sh, um para produção, outro para QA. Ambos
   com HTTPS habilitado.
 
   - Production: https://greenthumb-prod.surge.sh
-
-  - Desenvolvimento: https://greenthumb-staging.surge.sh
 
   - Testes: https://greenthumb-qa.surge.sh
 
