@@ -22,10 +22,10 @@
 
 ### Roadmap
 
-- Modules (Webpack)
-- Unit Test
-- Performance (lazy-load, audits, gtmetrix)
-- Integration Test (Cypress)
-- CI / CD
-- PWA
-- Acessibilidade e SEO (WAI-ARIA e JSON-LD);
+- [] Modules (Webpack)
+- [] Unit Test
+- [] Performance (lazy-load, audits, gtmetrix)
+- [] Integration Test (Cypress)
+- [] CI / CD
+- [] PWA
+- [] Acessibilidade e SEO (WAI-ARIA e JSON-LD);
