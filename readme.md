@@ -1,45 +1,30 @@
 #### 1° Dia - Proof of Concept
 
-- Criei uma _POC_ para definir a arquitetura da aplicação, onde haverá um _Stage_
-  que controlará os _Steps_, cada _Step_ terá seu próprio _Controller_;
+- Criei uma POC para definir a arquitetura da aplicação, onde haverá um Stage
+  que controlará os Steps, cada Step terá seu próprio Controller;
 
-- Para testar rápidamente utilizei o atributo _type_ com o novo valor _module_ para utilizar ES6 Modules e deixar o mais próximo para implementar com _Webpack_;
+- Para testar rápidamente utilizei o atributo type com o novo valor module para utilizar ES6 Modules e deixar o mais próximo para implementar com Webpack;
 
-#### 2° Dia - Mobile First
+#### 2° Dia - Layout
 
-- interface de transição entre cada _Step_ implementada, agora consigo trocar classes e deixar a animação por conta do _CSS_ utilizando _transitions_ e _keyframes_.
+- Criei 3 dominios no surge.sh, um para produção, outro para staging e outro para QA. Todos
+  com HTTPS habilitado.
 
-- Configuração do _Webpack_ para configurar a arquitetura do _CSS_ com _SASS_.
+  - Production: https://greenthumb-prod.surge.sh
 
-- Escolhi fazer o design da aplicação _Mobile First_ e codifiquei todo o _HTML_ sem desacoplar para agilizar o processo visual, provavelmente vou utilizar _Handlebars_ para modularizar.
+  - Desenvolvimento: https://greenthumb-staging.surge.sh
 
-#### 3° Dia - Unit Test
+  - Testes: https://greenthumb-qa.surge.sh
 
-- Adicionando testes unitários para prevenir possíveis bugs na aplicação e identificar pontos para refatoração;
-
-#### 4° Dia - Performance
-
-- Adicionando lazy-load nas imagens;
-
-- Avaliando a Performance da Aplicação com os programas: Audits do Google Chrome e GTMetrix;
+- Iniciei o desenvolvimento do layout utilizando custom properties ao invés de trabalhar
+  com um pre-processador, apenas para organizar as cores do tema do projeto.
 
 
-#### 5° Dia - Manual Deploy
+### Roadmap
 
-- Realizei Deploy da Aplicação via _Surge_, para poder realizar testes com protocolo _HTTPS_ e teste de integração.
-
-#### 6° Dia - Integration Test
-
-- Realizei teste de integração com _Cypress_;
-
-#### 7° Dia - CI / CD
-- Configurei o Travis CI para realizar integração
-  continua e deploy continuo;
-
-#### 8° Dia - PWA
-
-- Verificar a possibilidade de adicionar PWA;
-
-#### 9° Dia - Acessibilidade e SEO
-
-- Trabalhar com WAI-ARIA e JSON-LD;
+- Unit Test
+- Performance (lazy-load, audits, gtmetrix)
+- Integration Test (Cypress)
+- CI / CD
+- PWA
+- Acessibilidade e SEO (WAI-ARIA e JSON-LD);

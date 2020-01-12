@@ -6,15 +6,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>GreenThumb</title>
   <meta name="description" content="">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="assets/styles/main.css">
 </head>
 <body>
 
   <div class="wrapper">
 
     <div class="stage" data-stage>
-      <div class="step step--active" data-stage-step="0">
-        <button data-stage-command="next">Start</button>
+
+      <div class="step step--active" data-stage-step="0" data-step-label="home">
+
+        <div class="container">
+
+          <div class="call-to-action">
+            <div class="logo">
+              <img src="assets/images/logo-greenthumb.svg" alt="">
+            </div>
+
+            <h1 class="title title--highlight">
+              Find your<br>
+              next green<br>
+              friend
+            </h1>
+
+            <button class="btn btn--large" data-stage-command="next">start quizz</button>
+          </div>
+        </div>
+
       </div>
 
       <div class="step" data-stage-step="1">
@@ -39,6 +57,6 @@
 
   </div>
 
-  <script src="scripts/app.js" type="module"></script>
+  <script src="assets/scripts/app.js" type="module"></script>
 </body>
 </html>

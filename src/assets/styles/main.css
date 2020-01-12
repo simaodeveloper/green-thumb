@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,700&display=swap');
+
+:root {
+
+  --color-default: #ffffff;
+  --color-primary: #15573F;
+  --color-second: #FD9872 ;
+  --color-third: #7BAF9E;
+  --color-fourth: #6e6e6e;
+  --color-fifth: #0b251c;
+
+  --text-color-default: var(--color-fourth);
+  --text-color-primary: var(--color-fifth);
+
+  --button-border-default-color: var(--color-primary);
+  --button-bg-default-color: var(--color-primary);
+  --button-text-default-color: var(--color-default);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.stage,
+.step {
+  width: 100%;
+  height: 100%;
+}
+
+.step {
+  display: none;
+}
+
+.step[data-step-label="home"] {
+  background: url(../images/illustration-home.png) no-repeat 85% 100%;
+  background-size: 50%;
+}
+
+.step[data-step-label="home"] .call-to-action {
+  margin-top: 66px;
+}
+
+.step[data-step-label="home"] .logo {
+  width: 227px;
+  height: 29px;
+  margin-bottom: 98px;
+}
+
+.step[data-step-label="home"] .title {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1.2em;
+  color: var(--text-color-primary);
+  margin-bottom: 28px;
+}
+
+
+.step:nth-child(2) {
+  background: green;
+}
+
+.step:nth-child(3) {
+  background: red;
+}
+
+.step:nth-child(4) {
+  background: blue;
+}
+
+.step:nth-child(5) {
+  background: purple;
+}
+
+
+.step--active {
+  display: block;
+}
+
+.container {
+  display: flow-root;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.title--highlight {
+  font-weight: 700;
+  font-size: 55px;
+}
+
+.btn {
+  width: 170px;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid var(--button-border-default-color);
+  background: var(--button-bg-default-color);
+  color: var(--button-text-default-color);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn.btn--large {
+  width: 184px;
+  height: 55px;
+}

@@ -17,12 +17,12 @@ export default class Stage {
     this.minIndexStep = 0;
     this.maxIndexStep = this.steps.length - 1;
 
-    this.setupView();
+    this.loadEvents();
 
     if (this.canStart) this.start();
   }
 
-  setupView() {
+  loadEvents() {
     /*
       Global controls to handle transitions between each step
     */
