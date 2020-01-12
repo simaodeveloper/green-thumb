@@ -21,7 +21,7 @@
 ### Roadmap
 
 - [ ] Modules (Webpack)
-- [ ] Unit Test
+- [ ] Unit Test (Jest)
 - [ ] Performance (lazy-load, audits, gtmetrix)
 - [ ] Integration Test (Cypress)
 - [ ] CI / CD
