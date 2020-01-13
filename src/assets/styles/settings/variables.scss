@@ -1,0 +1,38 @@
+
+/*
+  Base Colors
+*/
+$color-default: #ffffff;
+$color-primary: #15573F;
+$color-second: #FD9872 ;
+$color-third: #7BAF9E;
+$color-fourth: #6e6e6e;
+$color-fifth: #0b251c;
+$color-sixth: #f6f6f6;
+
+/*
+  Text
+*/
+
+$text-color-default: $color-fourth;
+$text-color-primary: $color-fifth;
+
+/*
+  Background
+*/
+
+$bg-color-default: $color-sixth;
+
+/*
+  Buttons
+*/
+
+$button-border-default-color: $color-primary;
+$button-bg-default-color: $color-primary;
+$button-text-default-color: $color-default;
+
+/*
+  Panels
+*/
+
+$panel-bg-default-color: $color-default;
