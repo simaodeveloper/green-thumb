@@ -2,6 +2,7 @@ import path from 'path';
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import SVGSpritemapPlugin from 'svg-spritemap-webpack-plugin';
 import sass from 'sass';
 
 export default {
@@ -65,6 +66,17 @@ export default {
     new MiniCssExtractPlugin({
       filename: `assets/styles/[name].[hash:8].css`,
       esModule: true,
-    })
+    }),
+    new SVGSpritemapPlugin(
+      path.resolve(__dirname, 'src/assets/images/icons/**/*.svg'), {
+        output: {
+          filename: 'assets/images/icons.svg',
+          svgo: true
+        },
+        sprite: {
+          prefix: 'svg-'
+        }
+      }
+    )
   ]
 }
