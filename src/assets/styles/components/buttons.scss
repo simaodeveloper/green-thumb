@@ -1,4 +1,4 @@
-.btn {
+.c-btn {
   width: 170px;
   height: 50px;
   border-radius: 25px;
@@ -12,10 +12,10 @@
     height: 55px;
   }
 
-  &--default {
-    border: 1px solid $button-border-default-color;
-    background: $button-bg-default-color;
-    color: $button-text-default-color;
+  &--primary {
+    border: 1px solid $button-border-primary-color;
+    background: $button-bg-primary-color;
+    color: $button-text-primary-color;
   }
 
   &:hover {

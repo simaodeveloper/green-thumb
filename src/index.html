@@ -12,45 +12,59 @@
 
   <div class="wrapper">
 
-    <div class="stage" data-stage>
+    <div class="o-stage" data-js-stage>
 
-      <div class="stage--step step--active" data-stage-step="0" data-step-label="home">
+      <div class="o-stage__step step--is-active c-intro" data-stage-step="0" data-step-label="home">
 
         <div class="container">
 
-          <div class="call-to-action">
-            <div class="logo">
+          <div class="c-intro__call-to-action">
+            <div class="c-intro__logo">
               <img src="assets/images/logo-greenthumb.svg" alt="">
             </div>
 
-            <h1 class="title title--highlight">
+            <h1 class="c-intro__title o-title o-title--highlight">
               Find your<br>
               next green<br>
               friend
             </h1>
 
-            <button class="btn btn--default btn--large" data-stage-command="next">start quizz</button>
+            <button class="c-btn c-btn--primary c-btn--large c-intro__button" data-stage-command="next">start quizz</button>
           </div>
         </div>
 
       </div>
 
-      <div class="stage--step" data-stage-step="1">
+      <div class="o-stage__step" data-stage-step="1">
+
+        <img src="assets/images/sun.png" alt="">
+
+        <h2 class="o-title o-title--default">
+          First, set the amount of<br>
+          sunlight your plant will get
+        </h2>
+
+        <div class="o-options__list">
+          <div class="o-options__item">
+
+          </div>
+        </div>
+
         <button data-stage-command="prev">Home</button>
         <button data-stage-command="next">Next</button>
       </div>
 
-      <div class="stage--step" data-stage-step="2">
+      <div class="o-stage__step" data-stage-step="2">
         <button data-stage-command="prev">Prev</button>
         <button data-stage-command="next">Next</button>
       </div>
 
-      <div class="stage--step" data-stage-step="3">
+      <div class="o-stage__step" data-stage-step="3">
         <button data-stage-command="prev">Prev</button>
         <button data-stage-command="next">Next</button>
       </div>
 
-      <div class="stage--step" data-stage-step="4">
+      <div class="o-stage__step" data-stage-step="4">
         <button data-stage-command="prev">Prev</button>
       </div>
     </div>

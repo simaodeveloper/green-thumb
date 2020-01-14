@@ -1,0 +1,22 @@
+.c-intro {
+  background: url(../images/illustration-home.png) no-repeat 85% 100%;
+  background-size: 50%;
+
+  &__call-to-action {
+    margin-top: 66px;
+  }
+
+  &__logo {
+    width: 227px;
+    height: 29px;
+    margin-bottom: 98px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 1.2em;
+    color: $text-color-primary;
+    margin-bottom: 28px;
+  }
+}

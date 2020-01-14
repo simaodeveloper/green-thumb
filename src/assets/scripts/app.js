@@ -14,7 +14,7 @@ class Application {
 
     // Set Initial State
     const stage = new Stage({
-      el: '.stage',
+      el: '[data-js-stage]',
       steps,
       initialStep: 0,
       canStart: true,

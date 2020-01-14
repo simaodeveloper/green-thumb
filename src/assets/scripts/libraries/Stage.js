@@ -32,11 +32,11 @@ export default class Stage {
 
 
       if ('stageCommand' in commands) {
-        currentStepEl.classList.remove('step--active');
+        currentStepEl.classList.remove('step--is-active');
         this[commands.stageCommand]();
 
         const nextStepEl = getElements(`[data-stage-step="${this.currentStep}"]`)[0];
-        nextStepEl.classList.add('step--active');
+        nextStepEl.classList.add('step--is-active');
       }
     });
   }
