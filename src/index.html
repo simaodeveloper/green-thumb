@@ -14,7 +14,7 @@
 
     <div class="o-stage" data-js-stage>
 
-      <div class="o-stage__step step--is-active c-intro" data-stage-step="0" data-step-label="home">
+      <div class="o-stage__step c-intro" data-stage-step="0" data-step-label="home">
 
         <div class="container">
 
@@ -24,15 +24,13 @@
             </div>
 
             <h1 class="c-intro__title o-title o-title--highlight">
-              Find your<br>
-              next green<br>
+              Find your<span class="breakline breakline--tablet-up">
+              next <span class="breakline breakline--mobile-down">green<span class="breakline breakline--tablet-up">
               friend
             </h1>
 
-            <button class="c-btn c-btn--primary c-btn--large c-intro__button" data-stage-command="next">
-              <span class="c-btn__icon">
-                <svg class="icon icon-arrow-right icon--1x"><use xlink:href="assets/images/icons.svg#svg-arrow-right"/></svg>
-              </span>
+            <button class="c-btn c-btn--primary c-btn--large c-btn--has-icon c-btn--text-bold c-intro__button" data-stage-command="next">
+              <svg class="c-btn__icon icon icon--1x"><use xlink:href="assets/images/icons.svg#svg-arrow-right"/></svg>
               <span class="c-btn__text">start quizz</span>
             </button>
           </div>
@@ -40,36 +38,48 @@
 
       </div>
 
-      <div class="o-stage__step" data-stage-step="1">
+      <div class="o-stage__step" data-stage-step="1" data-step-label="sun">
+        <div class="o-survey">
 
-        <img src="assets/images/sun.png" alt="">
+          <figure class="o-survey__image">
+            <img src="assets/images/sun.png" alt="">
+          </figure>
 
-        <h2 class="o-title o-title--default">
-          First, set the amount of<br>
-          sunlight your plant will get
-        </h2>
+          <h2 class="o-survey__title o-title o-title--default">
+            First, set the amount of<br>
+            sunlight your plant will get
+          </h2>
 
-        <div class="o-options__list">
-          <div class="o-options__item">
+          <div class="o-survey__options o-options__list">
+            <div class="o-options__item">
 
+            </div>
+          </div>
+
+          <div class="o-survey__buttons">
+            <button data-stage-command="next" class="c-btn c-btn--primary c-btn--large c-btn--has-icon c-btn--text-light">
+              <svg class="c-btn__icon icon icon--1x"><use xlink:href="assets/images/icons.svg#svg-arrow-right"/></svg>
+              <span class="c-btn__text">Next</span>
+            </button>
+            <button data-stage-command="prev" class="c-btn c-btn--default c-btn--large c-btn--has-icon c-btn--text-light">
+              <svg class="c-btn__icon icon icon--1x"><use xlink:href="assets/images/icons.svg#svg-arrow-left"/></svg>
+              <span class="c-btn__text">Home</span>
+            </button>
           </div>
         </div>
-
-        <button data-stage-command="prev">Home</button>
-        <button data-stage-command="next">Next</button>
       </div>
 
-      <div class="o-stage__step" data-stage-step="2">
+      <div class="o-stage__step" data-stage-step="2" data-step-label="water">
         <button data-stage-command="prev">Prev</button>
         <button data-stage-command="next">Next</button>
       </div>
 
-      <div class="o-stage__step" data-stage-step="3">
+      <div class="o-stage__step" data-stage-step="3" data-step-label="pets">
         <button data-stage-command="prev">Prev</button>
         <button data-stage-command="next">Next</button>
       </div>
 
-      <div class="o-stage__step" data-stage-step="4">
+      <div class="o-stage__step" data-stage-step="4" data-step-label="form">
         <button data-stage-command="prev">Prev</button>
       </div>
     </div>

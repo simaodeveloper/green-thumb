@@ -1,28 +1,55 @@
 .c-btn {
+  @include font-weight('light');
+
   width: 170px;
   height: 50px;
-  border-radius: 25px;
+  border-radius: 30px;
 
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  font-weight: 700;
 
   &--large {
     width: 184px;
     height: 55px;
+    padding: 0 20px;
+  }
+
+  &--default {
+    border: 1px solid $button-border-default-color;
+    background: $button-bg-default-color;
+    color: $button-text-default-color;
+
+    .c-btn__icon {
+      fill: $button-icon-default-color;
+    }
   }
 
   &--primary {
     border: 1px solid $button-border-primary-color;
     background: $button-bg-primary-color;
     color: $button-text-primary-color;
+
+    .c-btn__icon {
+      fill: $button-icon-primary-color;
+    }
   }
 
-  &__icon {
-    width: 26px;
-    height: 20px;
-    display: inline-block;
-    margin-top: 5px;
+  &--has-icon {
+    display: flex;
+    align-items: center;
+
+    .c-btn__text {
+      margin-left: 15px;
+      width: 100%;
+    }
+  }
+
+  &--text-light {
+    @include font-weight('light');
+  }
+
+  &--text-bold {
+    @include font-weight('bold');
   }
 
   &:hover {

@@ -1,5 +1,17 @@
 
 /*
+  Breakpoints
+*/
+$breakpoint-mobile-small: 320px;
+$breakpoint-mobile-medium: 360px;
+$breakpoint-mobile: 375px;
+$breakpoint-tablet: 415px;
+$breakpoint-desktop: 1024px;
+
+$breakpoint-height-iphoneX: 812px;
+$breakpoint-height-iphone5: 568px;
+
+/*
   Base Colors
 */
 $color-default: #ffffff;
@@ -27,13 +39,17 @@ $bg-color-default: $color-sixth;
   Buttons
 */
 
+// Default
 $button-border-default-color: $color-primary;
 $button-bg-default-color: $color-sixth;
 $button-text-default-color: $color-primary;
+$button-icon-default-color: $color-primary;
 
+// Primary
 $button-border-primary-color: $color-primary;
 $button-bg-primary-color: $color-primary;
 $button-text-primary-color: $color-default;
+$button-icon-primary-color: $color-default;
 
 /*
   Panels

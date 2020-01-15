@@ -5,3 +5,13 @@
     clear: both;
   }
 }
+
+@mixin font-weight($font-weight) {
+  @if ($font-weight == "light") {
+    font-weight: 300;
+  }
+
+  @if ($font-weight == "bold") {
+    font-weight: 700;
+  }
+}

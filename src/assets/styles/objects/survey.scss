@@ -1,0 +1,15 @@
+.o-survey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
