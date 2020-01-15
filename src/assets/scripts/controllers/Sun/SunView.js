@@ -1,6 +1,6 @@
 import { getElements } from '../../helpers';
 
-const STEP_LABEL = 'sun';
+const STEP_LABEL = 'Sun';
 
 export default class SunView {
   constructor() {

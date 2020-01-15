@@ -27,7 +27,7 @@ export default class Stage {
       Global controls to handle transitions between each step
     */
     this.el.addEventListener('click', event => {
-      const currentStepEl = getElements(`[data-stage-step="${this.currentStep}"]`)[0];
+      const currentStepEl = getElements(`[data-step-label="${this.steps[this.currentStep].label}"]`)[0];
       const commands = event.target.dataset;
 
 
@@ -35,7 +35,7 @@ export default class Stage {
         currentStepEl.classList.remove('step--is-active');
         this[commands.stageCommand]();
 
-        const nextStepEl = getElements(`[data-stage-step="${this.currentStep}"]`)[0];
+        const nextStepEl = getElements(`[data-step-label="${this.steps[this.currentStep].label}"]`)[0];
         nextStepEl.classList.add('step--is-active');
       }
     });

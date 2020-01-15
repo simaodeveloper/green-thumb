@@ -1,6 +1,6 @@
 import { getElements } from '../../helpers';
 
-const STEP_LABEL = 'water';
+const STEP_LABEL = 'Water';
 
 export default class WaterView {
   constructor() {
