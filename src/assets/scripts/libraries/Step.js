@@ -1,13 +1,13 @@
 import { getElements } from '../helpers';
 
 export default class Step {
-  constructor(state, steps, stage, view) {
-    this.state = state;
+  constructor(step, steps, stage, view) {
+    this.step = step;
     this.steps = steps;
     this.stage = stage;
     this.view = view;
 
-    this.view.setElementByLabel(this.state.label);
+    this.view.setElementByLabel(this.step.label);
   }
 
   start() {

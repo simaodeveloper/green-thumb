@@ -1,34 +1,34 @@
 export default [
   {
     label: 'Home',
-    data: {
+    state: {
       started: false
     }
   },
   {
     label: 'Sun',
-    data: {
+    state: {
       values: ['high', 'low', 'no'],
       currentValue: null
     }
   },
   {
     label: 'Water',
-    data: {
+    state: {
       values: ['daily', 'regularly', 'rarely'],
       currentValue: null
     }
   },
   {
     label: 'Pets',
-    data: {
+    state: {
       values: [false, true],
       currentValue: null
     }
   },
   {
     label: 'Form',
-    data: {
+    state: {
       fullname: '',
       email: ''
     },

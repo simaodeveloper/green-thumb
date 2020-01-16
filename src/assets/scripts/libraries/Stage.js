@@ -100,7 +100,7 @@ export default class Stage {
     return this.stepControllers[label];
   }
 
-  setStepState(newStepState) {
-    this.steps[this.currentStep] = {...newStepState};
+  setStepState(newState) {
+    this.steps[this.currentStep].state = {...newState};
   }
 }

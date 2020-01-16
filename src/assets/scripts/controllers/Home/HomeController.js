@@ -1,7 +1,15 @@
 import Step from '../../libraries/Step';
 
 export default class HomeController extends Step {
-  constructor(state, steps, stage, view) {
-    super(state, steps, stage, view);
+  constructor(step, steps, stage, view) {
+    super(step, steps, stage, view);
+
+    this.init();
+  }
+
+  init() {
+    const newState = { ...this.step.state };
+    newState.started = true;
+    this.stage.setStepState(newState);
   }
 }

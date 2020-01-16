@@ -1,7 +1,8 @@
 #### 10/01/2020 - Proof of Concept
 
 - Criei uma POC para definir a arquitetura da aplicação, onde haverá um Stage
-  que controlará os Steps, cada Step terá seu próprio Controller;
+  que controlará os Steps, cada Step terá seu próprio Controller e View. O Model será um State que é passado na criação da
+  instancia do Stage e a cada Step ativo ele terá acesso ao seu State + todos os Steps + o controle do Stage (tudo via parametro);
 
 - Para testar rápidamente utilizei o atributo type com o novo valor module para utilizar ES6 Modules e deixar o mais próximo para implementar com Webpack;
 

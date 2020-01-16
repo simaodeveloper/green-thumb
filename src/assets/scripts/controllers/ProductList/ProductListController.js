@@ -1,5 +1,5 @@
 export default class ProductListController {
-  constructor({ state, steps, stage}) {
+  constructor({ step, steps, stage}) {
     console.log('I running like a pet Bitch!')
   }
 }
