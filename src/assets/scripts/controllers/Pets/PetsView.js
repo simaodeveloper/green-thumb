@@ -1,19 +1,3 @@
-import { getElements } from '../../helpers';
+import Step from '../../libraries/Step';
 
-const STEP_LABEL = 'Pets';
-
-export default class PetsView {
-  constructor() {
-    this.el = getElements(`[data-step-label="${STEP_LABEL}"]`)[0];
-    this.prevEl = getElements('[data-stage-command="prev"]', this.el)[0];
-    this.nextEl = getElements('[data-stage-command="next"]', this.el)[0];
-  }
-
-  transitionStart() {
-    this.el.classList.add('step--is-active');
-  }
-
-  transitionEnd() {
-    this.el.classList.remove('step--is-active');
-  }
-}
+export default class PetsView extends Step.View { }

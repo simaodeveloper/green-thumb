@@ -3,6 +3,8 @@ import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import SVGSpritemapPlugin from 'svg-spritemap-webpack-plugin';
+import ImageminPlugin from 'imagemin-webpack-plugin';
+
 import sass from 'sass';
 
 export default {
@@ -77,6 +79,9 @@ export default {
           prefix: 'svg-'
         }
       }
-    )
+    ),
+    new ImageminPlugin({
+      test: '/\.(jpe?g|png|gif)$/i'
+    }),
   ]
 }

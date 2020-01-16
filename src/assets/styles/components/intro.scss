@@ -50,11 +50,15 @@
 
   &__title {
     margin-bottom: 10vw;
-    font-size: 40px;
+    font-size: 35px;
     color: $text-color-primary;
     font-weight: 700;
     line-height: 1.2em;
     text-align: center;
+
+    @media (min-width: $breakpoint-mobile) {
+      font-size: 40px;
+    }
 
     @media (min-width: $breakpoint-tablet) {
       margin-bottom: 28px;

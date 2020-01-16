@@ -1,4 +1,7 @@
-import { getElements } from '../helpers/index.js';
+import {
+  getElements,
+  getClosestElementByAttribute
+} from '../helpers/index.js';
 
 export default class Stage {
   constructor({
@@ -26,22 +29,20 @@ export default class Stage {
     /*
       Global controls to handle transitions between each step
     */
+
     this.el.addEventListener('click', event => {
-      const currentStepEl = getElements(`[data-step-label="${this.steps[this.currentStep].label}"]`)[0];
-      const commands = event.target.dataset;
+      let element = getClosestElementByAttribute(event.target, 'data-stage-command');
 
-
-      if ('stageCommand' in commands) {
-        currentStepEl.classList.remove('step--is-active');
+      if (element) {
+        const commands = element.dataset;
         this[commands.stageCommand]();
-
-        const nextStepEl = getElements(`[data-step-label="${this.steps[this.currentStep].label}"]`)[0];
-        nextStepEl.classList.add('step--is-active');
       }
     });
   }
 
   prev() {
+    this.getCurrentStepInstance().leave('prev');
+
     if (this.currentStep <= this.minIndexStep) {
       return false;
     }
@@ -50,10 +51,12 @@ export default class Stage {
       --this.currentStep;
     }
 
-    this.getCurrentController();
+    this.getCurrentStepInstance().enter('prev');
   }
 
   next() {
+    this.getCurrentStepInstance().leave('next');
+
     if (this.currentStep >= this.maxIndexStep) {
       return false;
     }
@@ -62,21 +65,42 @@ export default class Stage {
       ++this.currentStep;
     }
 
-    this.getCurrentController();
+    this.getCurrentStepInstance().enter('next');
   }
 
   start() {
-    const controller = this.getCurrentController();
+
+    const stepInstance = this.getCurrentStepInstance();
+
+    if ('start' in stepInstance) {
+      stepInstance.start();
+    }
   }
 
-  getCurrentController() {
-    const step = this.steps[this.currentStep];
-    const Controller = this.stepControllers[step.label];
+  getCurrentStepInstance() {
+    const step = this.getCurrentStep();
+    const Controller = this.getControllerBylabel(step.label);
 
-    return new Controller(step, this.steps, this);
+    if (!this.stepsInstances) {
+      this.stepsInstances = {};
+    }
+
+    if (!(step.label in this.stepsInstances)) {
+      this.stepsInstances[step.label] = new Controller(step, this.steps, this);
+    }
+
+    return this.stepsInstances[step.label];
+  }
+
+  getCurrentStep() {
+    return this.steps[this.currentStep];
+  }
+
+  getControllerBylabel(label) {
+    return this.stepControllers[label];
   }
 
   setStepState(newStepState) {
-    this.steps[this.currentStep] = newStepState;
+    this.steps[this.currentStep] = {...newStepState};
   }
 }

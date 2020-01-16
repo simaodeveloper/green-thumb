@@ -1,5 +1,7 @@
-export default class FormController {
-  constructor({ state, steps, stage }) {
-    console.log('I finished like a Form Bitch!')
+import Step from '../../libraries/Step';
+
+export default class FormController extends Step {
+  constructor(state, steps, stage, view) {
+    super(state, steps, stage, view);
   }
 }

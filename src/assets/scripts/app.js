@@ -1,12 +1,12 @@
 import steps from './state.js';
 
-import HomeController from './controllers/Home/HomeController.js';
+import HomeControllerAdapter from './controllers/Home/HomeControllerAdapter.js';
 import SunControllerAdapter from './controllers/Sun/SunControllerAdapter.js';
 import WaterControllerAdapter from './controllers/Water/WaterControllerAdapter.js';
 import PetsControllerAdapter from './controllers/Pets/PetsControllerAdapter.js';
 import ProductListController from './controllers/ProductList/ProductListController.js';
 import ProductDetailController from './controllers/ProductDetail/ProductDetailController.js';
-import FormController from './controllers/Form/FormController.js';
+import FormControllerAdapter from './controllers/Form/FormControllerAdapter.js';
 
 import Stage from './libraries/Stage.js';
 
@@ -18,16 +18,16 @@ class Application {
     const stage = new Stage({
       el: '[data-js-stage]',
       steps,
-      initialStep: 1,
+      initialStep: 0,
       canStart: true,
       stepControllers: {
-        Home: HomeController,
+        Home: HomeControllerAdapter,
         Sun: SunControllerAdapter,
         Water: WaterControllerAdapter,
         Pets: PetsControllerAdapter,
         ProductList: ProductListController,
         ProductDetail: ProductDetailController,
-        Form: FormController
+        Form: FormControllerAdapter
       }
     });
   }

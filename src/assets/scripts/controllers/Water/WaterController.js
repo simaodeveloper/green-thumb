@@ -1,10 +1,7 @@
-export default class WaterController {
-  constructor(state, steps, stage, view) {
-    this.state = state;
-    this.steps = steps;
-    this.stage = stage;
-    this.view = view;
+import Step from '../../libraries/Step';
 
-    this.view.transitionStart();
+export default class WaterController extends Step {
+  constructor(state, steps, stage, view) {
+    super(state, steps, stage, view);
   }
 }
