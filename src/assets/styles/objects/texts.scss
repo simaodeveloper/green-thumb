@@ -1,0 +1,10 @@
+.o-text {
+
+  &--light {
+    @include font-weight('light');
+  }
+
+  &--bold {
+    @include font-weight('bold');
+  }
+}

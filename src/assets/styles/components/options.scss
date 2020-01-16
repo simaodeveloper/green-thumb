@@ -1,0 +1,45 @@
+.c-options {
+
+  &__item {
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__panel {
+    display: flex;
+    align-items: center;
+    transition: background-color .35s ease,
+                box-shadow .35s ease;
+    will-change: background-color, box-shadow;
+  }
+
+  &__icon {
+    transition: fill .35s ease;
+    will-change: fill;
+  }
+
+  &--primary {
+
+    .c-options__icon {
+      fill: $color-second;
+    }
+
+    .c-options__item {
+      @include option-item-active($color-second, $color-default);
+    }
+  }
+
+  &--second {
+    .c-options__icon {
+      fill: $color-third;
+    }
+
+    .c-options__item {
+      @include option-item-active($color-third, $color-default);
+    }
+  }
+}

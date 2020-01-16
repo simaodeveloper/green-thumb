@@ -1,5 +1,10 @@
 export default class WaterController {
   constructor(state, steps, stage, view) {
-    console.log('I flow like the Water Bitch!')
+    this.state = state;
+    this.steps = steps;
+    this.stage = stage;
+    this.view = view;
+
+    this.view.transitionStart();
   }
 }

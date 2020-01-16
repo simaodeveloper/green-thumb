@@ -5,11 +5,17 @@
 
 @import 'tools/placeholders';
 @import 'tools/mixins';
+@import 'tools/mixins.options';
 
+@import 'base/general';
 @import 'base/images';
 
-@import 'objects/breakline';
+@import 'objects/colors';
+@import 'objects/images';
+@import 'objects/titles';
+@import 'objects/breaklines';
 @import 'objects/icons';
+@import 'objects/texts';
 @import 'objects/containers';
 @import 'objects/wrappers';
 @import 'objects/stage';
@@ -17,21 +23,5 @@
 @import 'objects/survey';
 
 @import 'components/buttons';
+@import 'components/options';
 @import 'components/intro';
-
-
-.stage--step:nth-child(2) {
-  background: green;
-}
-
-.stage--step:nth-child(3) {
-  background: red;
-}
-
-.stage--step:nth-child(4) {
-  background: blue;
-}
-
-.stage--step:nth-child(5) {
-  background: purple;
-}

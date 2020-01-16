@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @mixin clearfix() {
   &::after {
     content: "";
@@ -14,4 +16,8 @@
   @if ($font-weight == "bold") {
     font-weight: 700;
   }
+}
+
+@mixin box-shadow($x, $y, $blur, $hexColor, $alpha) {
+  box-shadow: $x $y $blur rgba(color.red($hexColor), color.green($hexColor), color.blue($hexColor), $alpha);
 }

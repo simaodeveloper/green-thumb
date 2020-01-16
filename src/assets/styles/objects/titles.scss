@@ -1,15 +1,16 @@
-.title {
+.o-title {
+  line-height: 1.2em;
 
     &--highlight {
-      font-weight: 700;
+      @include font-weight('bold');
       font-size: 80px;
-      line-height: 1.2em;
-      color: $text-color-primary;
+    }
+
+    &--default {
+      font-size: 25px;
     }
 
     &--primary {
-      font-weight: 700;
       font-size: 40px;
-      line-height: 1.2em;
     }
 }

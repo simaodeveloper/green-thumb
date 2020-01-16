@@ -9,7 +9,7 @@ export default {
   entry: './src/entry.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: `assets/scripts/[name].[hash:8].js`,
+    filename: `scripts/[name].[hash:8].js`,
     publicPath: '/',
   },
   module: {
@@ -50,7 +50,7 @@ export default {
             loader: 'file-loader',
             options: {
               name: '[name].[hash:8].[ext]',
-              outputPath: 'assets/images/',
+              outputPath: 'images/',
               esModule: false
             },
           },
@@ -64,13 +64,13 @@ export default {
       filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: `assets/styles/[name].[hash:8].css`,
+      filename: `styles/[name].[hash:8].css`,
       esModule: true,
     }),
     new SVGSpritemapPlugin(
       path.resolve(__dirname, 'src/assets/images/icons/**/*.svg'), {
         output: {
-          filename: 'assets/images/icons.svg',
+          filename: 'images/icons.svg',
           svgo: true
         },
         sprite: {

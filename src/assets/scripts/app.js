@@ -3,7 +3,7 @@ import steps from './state.js';
 import HomeController from './controllers/Home/HomeController.js';
 import SunControllerAdapter from './controllers/Sun/SunControllerAdapter.js';
 import WaterControllerAdapter from './controllers/Water/WaterControllerAdapter.js';
-import PetsController from './controllers/Pets/PetsController.js';
+import PetsControllerAdapter from './controllers/Pets/PetsControllerAdapter.js';
 import ProductListController from './controllers/ProductList/ProductListController.js';
 import ProductDetailController from './controllers/ProductDetail/ProductDetailController.js';
 import FormController from './controllers/Form/FormController.js';
@@ -24,7 +24,7 @@ class Application {
         Home: HomeController,
         Sun: SunControllerAdapter,
         Water: WaterControllerAdapter,
-        Pets: PetsController,
+        Pets: PetsControllerAdapter,
         ProductList: ProductListController,
         ProductDetail: ProductDetailController,
         Form: FormController

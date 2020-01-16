@@ -6,7 +6,5 @@ export default class SunController {
     this.view = view;
 
     this.view.transitionStart();
-
-    console.log(state);
   }
 }

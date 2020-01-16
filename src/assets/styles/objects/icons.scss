@@ -1,8 +1,13 @@
-.icon {
+.o-icon {
   display: inline-block;
 
   &--1x {
     width: 26px;
     height: 20px;
+  }
+
+  &--2x {
+    width: 54px;
+    height: 40px;
   }
 }
