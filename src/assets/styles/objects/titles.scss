@@ -8,6 +8,10 @@
 
     &--default {
       font-size: 25px;
+
+      @media (min-width: $breakpoint-tablet) {
+        font-size: 35px;
+      }
     }
 
     &--primary {

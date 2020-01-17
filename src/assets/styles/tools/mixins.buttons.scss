@@ -1,0 +1,9 @@
+@mixin button-style($borderColor, $bgColor, $textColor, $fillColor) {
+  border: 1px solid $borderColor;
+  background: $bgColor;
+  color: $textColor;
+
+  .c-btn__icon {
+    fill: $fillColor;
+  }
+}

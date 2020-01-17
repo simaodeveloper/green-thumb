@@ -1,5 +1,6 @@
 import path from 'path';
 
+import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import SVGSpritemapPlugin from 'svg-spritemap-webpack-plugin';
@@ -24,13 +25,13 @@ export default {
         },
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: { minimize: true },
-          },
-        ],
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+        query: {
+          inlineRequires: '/images/',
+          rootRelative: './src/templates/',
+          partialDirs: ['./src/templates/']
+        }
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -41,12 +42,16 @@ export default {
             loader: 'sass-loader',
             options: {
               implementation: sass,
+              sourceMap: true
             },
           },
         ],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
+        include: [
+          path.resolve(__dirname, 'src/assets/images')
+        ],
         use: [
           {
             loader: 'file-loader',
@@ -61,9 +66,10 @@ export default {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html'),
-      filename: './index.html',
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        handlebarsLoader: {}
+      }
     }),
     new MiniCssExtractPlugin({
       filename: `styles/[name].[hash:8].css`,
@@ -82,6 +88,9 @@ export default {
     ),
     new ImageminPlugin({
       test: '/\.(jpe?g|png|gif)$/i'
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src/templates/index.hbs'),
     }),
   ]
 }

@@ -8,30 +8,26 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 
+  @media (min-width: $breakpoint-tablet) {
+    width: auto;
+  }
+
   &--large {
     width: 184px;
     height: 55px;
     padding: 0 20px;
+
+    @media (min-width: $breakpoint-tablet) {
+      width: auto;
+    }
   }
 
   &--default {
-    border: 1px solid $button-border-default-color;
-    background: $button-bg-default-color;
-    color: $button-text-default-color;
-
-    .c-btn__icon {
-      fill: $button-icon-default-color;
-    }
+    @include button-style($button-border-default-color, $button-bg-default-color, $button-text-default-color, $button-icon-default-color);
   }
 
   &--primary {
-    border: 1px solid $button-border-primary-color;
-    background: $button-bg-primary-color;
-    color: $button-text-primary-color;
-
-    .c-btn__icon {
-      fill: $button-icon-primary-color;
-    }
+    @include button-style($button-border-primary-color, $button-bg-primary-color, $button-text-primary-color, $button-icon-primary-color);
   }
 
   &--has-icon {

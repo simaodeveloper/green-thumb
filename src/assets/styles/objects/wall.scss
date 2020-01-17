@@ -1,0 +1,38 @@
+.o-wall {
+  position: relative;
+
+  &__logo {
+    @media (min-width: $breakpoint-tablet) {
+      width: 20px;
+      height: 100%;
+      margin: 0;
+      position: fixed;
+      top: 0;
+      left: 85px;
+      bottom: 0;
+
+      &::after {
+        content: '';
+        width: 1px;
+        border-right: 1px solid #e4e9e7;
+        position: absolute;
+        top: 285px;
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #a4bcb3;
+      }
+    }
+  }
+
+  &__logo__image {
+
+    @media (min-width: $breakpoint-tablet) {
+      max-width: initial;
+      width: 180px;
+      height: 23px;
+      transform: rotate(-90deg) translate(-234px, 11px);
+      transform-origin: left;
+    }
+  }
+}

@@ -6,6 +6,7 @@
 @import 'tools/placeholders';
 @import 'tools/mixins';
 @import 'tools/mixins.options';
+@import 'tools/mixins.buttons';
 
 @import 'base/general';
 @import 'base/images';
@@ -21,6 +22,7 @@
 @import 'objects/stage';
 @import 'objects/panels';
 @import 'objects/survey';
+@import 'objects/wall';
 
 @import 'components/buttons';
 @import 'components/options';

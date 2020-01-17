@@ -8,6 +8,7 @@ export default class Step {
     this.view = view;
 
     this.view.setElementByLabel(this.step.label);
+    this.view.init();
   }
 
   start() {
@@ -24,6 +25,8 @@ export default class Step {
 }
 
 Step.View = class StepView {
+  init() {}
+
   setElementByLabel(label) {
     this.el = getElements(`[data-step-label="${label}"]`)[0];
   }
