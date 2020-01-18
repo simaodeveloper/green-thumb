@@ -5,10 +5,11 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import SVGSpritemapPlugin from 'svg-spritemap-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 
 import sass from 'sass';
 
-export default {
+export default (argv, mode) => ({
   entry: './src/entry.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -91,6 +92,13 @@ export default {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.hbs'),
+      preload: false,
     }),
+    new FaviconsWebpackPlugin({
+      logo: './src/assets/images/favicon.png',
+      outputPath: '/images/',
+      prefix: '/images/',
+      cache: mode !== 'development'
+    })
   ]
-}
+})

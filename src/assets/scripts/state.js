@@ -27,7 +27,7 @@ export default [
     }
   },
   {
-    label: 'Products',
+    label: 'Catalog',
     data: {
       products: [
         {
@@ -43,7 +43,7 @@ export default [
     }
   },
   {
-    label: 'ProductDetail',
+    label: 'Product',
     data: {
       id: 1,
       name: "Euphorbia eritrea",
