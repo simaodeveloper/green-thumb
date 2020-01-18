@@ -9,13 +9,13 @@
   }
 
   &--tablet-up {
-    @media (min-width: $breakpoint-tablet) {
+    @media (min-width: $breakpoint-tablet + 1) {
       display: block;
     }
   }
 
   &--mobile-down {
-    @media (max-width: $breakpoint-tablet - 1) {
+    @media (max-width: $breakpoint-tablet) {
       display: block;
     }
   }
