@@ -7,3 +7,8 @@
     fill: $fillColor;
   }
 }
+
+@mixin button-dimension($width: 184px, $height: 55px) {
+  width: $width;
+  height: $height;
+}

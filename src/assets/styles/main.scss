@@ -15,15 +15,22 @@
 @import 'objects/images';
 @import 'objects/titles';
 @import 'objects/breaklines';
+@import 'objects/logo';
 @import 'objects/icons';
-@import 'objects/texts';
 @import 'objects/containers';
 @import 'objects/wrappers';
 @import 'objects/stage';
 @import 'objects/panels';
 @import 'objects/survey';
+@import 'objects/catalog';
 @import 'objects/wall';
+@import 'objects/product';
 
 @import 'components/buttons';
 @import 'components/options';
+@import 'components/cards';
 @import 'components/intro';
+@import 'components/product';
+@import 'components/form';
+
+@import 'trumps/texts';

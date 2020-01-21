@@ -3,7 +3,12 @@
 
     &--highlight {
       @include font-weight('bold');
-      font-size: 80px;
+      font-size: 30px;
+      color: $text-color-primary;
+
+      @media (min-width: $breakpoint-tablet) {
+        font-size: 80px;
+      }
     }
 
     &--default {

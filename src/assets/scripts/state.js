@@ -44,21 +44,20 @@ export default [
   },
   {
     label: 'Product',
-    data: {
-      id: 1,
-      name: "Euphorbia eritrea",
-      sun: "high",
-      water: "rarely",
-      url: "https://front-static-recruitment.s3.amazonaws.com/euphorbia-eritrea.jpg",
-      price: 25,
-      toxicity: false,
-    }
-  },
-  {
-    label: 'Form',
     state: {
-      fullname: '',
-      email: ''
+      product: {
+        id: 1,
+        name: "Euphorbia eritrea",
+        sun: "high",
+        water: "rarely",
+        url: "https://front-static-recruitment.s3.amazonaws.com/euphorbia-eritrea.jpg",
+        price: 25,
+        toxicity: false,
+      },
+      form: {
+        fullname: '',
+        email: ''
+      }
     },
     finished: false
   }

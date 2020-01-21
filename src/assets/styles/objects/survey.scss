@@ -1,12 +1,12 @@
 .o-survey {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 65px 0 70px;
+  @extend %align-content-center;
+  padding: 25px 0 70px;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding-top: 65px
+  }
 
   &__logo {
-    width: 180px;
-    height: 23px;
     margin-bottom: 25px;
   }
 

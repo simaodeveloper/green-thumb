@@ -1,8 +1,6 @@
 .c-btn {
   @include font-weight('light');
-
-  width: 170px;
-  height: 50px;
+  @include button-dimension(170px, 50px);
   border-radius: 30px;
 
   font-family: 'Montserrat', sans-serif;
@@ -13,8 +11,7 @@
   }
 
   &--large {
-    width: 184px;
-    height: 55px;
+    @include button-dimension(184px, 55px);
     padding: 0 20px;
 
     @media (min-width: $breakpoint-tablet) {
@@ -22,12 +19,26 @@
     }
   }
 
+  &--full {
+    width: 100%;
+  }
+
   &--default {
-    @include button-style($button-border-default-color, $button-bg-default-color, $button-text-default-color, $button-icon-default-color);
+    @include button-style(
+      $button-border-default-color,
+      $button-bg-default-color,
+      $button-text-default-color,
+      $button-icon-default-color
+    );
   }
 
   &--primary {
-    @include button-style($button-border-primary-color, $button-bg-primary-color, $button-text-primary-color, $button-icon-primary-color);
+    @include button-style(
+      $button-border-primary-color,
+      $button-bg-primary-color,
+      $button-text-primary-color,
+      $button-icon-primary-color
+    );
   }
 
   &--has-icon {
@@ -38,14 +49,6 @@
       margin-left: 15px;
       width: 100%;
     }
-  }
-
-  &--text-light {
-    @include font-weight('light');
-  }
-
-  &--text-bold {
-    @include font-weight('bold');
   }
 
   &:hover {

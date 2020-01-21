@@ -49,10 +49,9 @@
   }
 
   &__title {
+    @include font-weight('bold');
     margin-bottom: 10vw;
     font-size: 35px;
-    color: $text-color-primary;
-    font-weight: 700;
     line-height: 1.2em;
     text-align: center;
 

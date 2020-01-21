@@ -6,7 +6,6 @@ import WaterControllerAdapter from './controllers/Water/WaterControllerAdapter.j
 import PetsControllerAdapter from './controllers/Pets/PetsControllerAdapter.js';
 import CatalogControllerAdapter from './controllers/Catalog/CatalogControllerAdapter.js';
 import ProductControllerAdapter from './controllers/Product/ProductControllerAdapter.js';
-import FormControllerAdapter from './controllers/Form/FormControllerAdapter.js';
 
 import Stage from './libraries/Stage.js';
 
@@ -14,11 +13,12 @@ class Application {
 
   static start() {
 
+
     // Set Initial State
     const stage = new Stage({
       el: '[data-js-stage]',
       steps,
-      initialStep: 4,
+      initialStep: 5,
       canStart: true,
       stepControllers: {
         Home: HomeControllerAdapter,
@@ -26,8 +26,7 @@ class Application {
         Water: WaterControllerAdapter,
         Pets: PetsControllerAdapter,
         Catalog: CatalogControllerAdapter,
-        Product: ProductControllerAdapter,
-        Form: FormControllerAdapter
+        Product: ProductControllerAdapter
       }
     });
   }

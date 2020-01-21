@@ -40,4 +40,5 @@ https://deviceatlas.com/blog/most-popular-smartphones
 - [ ] Integration Test (Cypress)
 - [ ] CI / CD (Travis CI)
 - [ ] PWA
+- [ ] Modular HTML (https://github.com/sagold/handlebars-webpack-plugin)
 - [ ] Acessibilidade e SEO (WAI-ARIA e JSON-LD);

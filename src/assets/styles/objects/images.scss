@@ -29,4 +29,14 @@
       height: 136px;
     }
   }
+
+  &--pick {
+    width: 157px;
+    height: 78px;
+
+    @media (min-width: $breakpoint-tablet) {
+      // width: 136px;
+      // height: 136px;
+    }
+  }
 }
