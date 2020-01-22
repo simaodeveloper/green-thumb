@@ -1,9 +1,12 @@
 import Step from '../../libraries/Step';
 import api from '../../API';
 
+import { getClosestElementByClass } from '../../utils';
+
 export default class CatalogController extends Step {
   constructor(step, steps, stage, view) {
     super(step, steps, stage, view);
+    this.loadEvents();
   }
 
   enter(direction) {
@@ -11,7 +14,7 @@ export default class CatalogController extends Step {
 
     const params = this.getParamsFromSurvey();
 
-    api.getProductListByParams({})
+    api.getProductListByParams(params)
       .then(response => this.view.transformDataToDisplay(response))
       .then(productList => this.view.getCardsTemplatesMap(productList))
       .then(htmlString => this.view.renderCards(htmlString))
@@ -22,13 +25,25 @@ export default class CatalogController extends Step {
     super.leave(direction);
   }
 
+  loadEvents() {
+    this.view.ui.catalogList.addEventListener('click', event => {
+      const cardButton = getClosestElementByClass(event.target, 'c-card__button');
+      console.log(cardButton)
+      if (cardButton) {
+        console.log('plant id', cardButton.dataset.plantId);
+      }
+    });
+  }
+
   getParamsFromSurvey() {
     const labels = ['Sun', 'Water', 'Pets'];
 
     return this.steps
       .filter(step => labels.includes(step.label))
       .reduce((params, step) => {
-        params[`${step.label.toLowerCase()}Value`] = step.state.currentValue;
+        let value = step.state.currentValue;
+        value = value === null ? undefined : value;
+        params[`${step.label.toLowerCase()}Value`] = value ;
         return params;
       }, {});
   }

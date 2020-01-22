@@ -1,4 +1,4 @@
-import { getElements, renderDOM } from '../../helpers';
+import { getElements, renderDOM } from '../../utils';
 
 import Is from '../../libraries/Is';
 
@@ -9,12 +9,6 @@ export default class CatalogView extends Step.View {
     this.ui = {
       catalogList: getElements('[ref="catalog-list"]')[0],
     }
-  }
-
-  loadEvents() {
-    this.ui.catalogList.addEventListener('click', event => {
-      console.log(event.target);
-    });
   }
 
   getCardTemplate({
@@ -43,7 +37,7 @@ export default class CatalogView extends Step.View {
               }
             </ul>
           </div>
-          <button class="c-btn c-btn--default c-btn--full c-card__button" data-product-id="${id}">buy now</button>
+          <button class="c-btn c-btn--default c-btn--full c-card__button" data-plant-id="${id}">buy now</button>
         </div>
       </article>
     `;

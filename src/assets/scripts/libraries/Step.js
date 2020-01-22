@@ -1,4 +1,4 @@
-import { getElements } from '../helpers';
+import { getElements } from '../utils';
 
 export default class Step {
   constructor(step, steps, stage, view) {

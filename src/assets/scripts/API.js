@@ -1,4 +1,5 @@
 import HTTP from './libraries/HTTP';
+import * as config from './config';
 
 class API {
   constructor(HTTP, baseUrl) {
@@ -26,14 +27,11 @@ class API {
 
   postProduct(data) {
     return this.HTTP.post({
-      url: 'https://app.greenhouse.io/tests/b65fa5ab26e0ef0932e0c74986bcdb12',
+      url: this.baseUrl,
       body: JSON.stringify(data)
     })
     .catch(err => console.error(err));
   }
 }
 
-export default new API(
-  HTTP,
-  `https://6nrr6n9l50.execute-api.us-east-1.amazonaws.com/default/front-plantTest-service`
-);
+export default new API(HTTP, config.API_URL);

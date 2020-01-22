@@ -22,7 +22,7 @@ export default [
   {
     label: 'Pets',
     state: {
-      values: [false, true],
+      values: ['false', 'true'],
       currentValue: null
     }
   },

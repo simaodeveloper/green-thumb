@@ -1,7 +1,7 @@
 import {
   getElements,
   getClosestElementByAttribute
-} from '../helpers/index.js';
+} from '../utils';
 
 export default class Stage {
   constructor({
