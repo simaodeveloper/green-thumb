@@ -18,7 +18,7 @@ class Application {
     const stage = new Stage({
       el: '[data-js-stage]',
       steps,
-      initialStep: 5,
+      initialStep: 0,
       canStart: true,
       stepControllers: {
         Home: HomeControllerAdapter,

@@ -12,11 +12,11 @@ export default class Step {
   }
 
   start() {
-    this.view.start();
+    this.view.enter();
   }
 
   enter(direction) {
-    this.view.start();
+    this.view.enter();
   }
 
   leave(direction) {
@@ -31,7 +31,7 @@ Step.View = class StepView {
     this.el = getElements(`[data-step-label="${label}"]`)[0];
   }
 
-  start() {
+  enter() {
     this.el.classList.add('step--is-active');
   }
 

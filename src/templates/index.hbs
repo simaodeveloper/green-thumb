@@ -55,18 +55,21 @@
                     <div class="o-panel c-options__panel">
                       <svg class="c-options__icon o-icon o-icon--2x"><use xlink:href="images/icons.svg#svg-high-sun"/></svg>
                       <span class="c-options__text t-text--light">High sunlight</span>
+                      <input type="radio" name="sunValue" value="high" class="c-options__input">
                     </div>
                   </div>
                   <div class="c-options__item c-options__item--has-icon">
                     <div class="o-panel c-options__panel">
                       <svg class="c-options__icon o-icon o-icon--2x c-options__icon"><use xlink:href="images/icons.svg#svg-low-sun"/></svg>
                       <span class="c-options__text t-text--light c-options__text">Low sunlight</span>
+                      <input type="radio" name="sunValue" value="low" class="c-options__input">
                     </div>
                   </div>
                   <div class="c-options__item c-options__item--has-icon">
                     <div class="o-panel c-options__panel">
                       <svg class="c-options__icon o-icon o-icon--2x o-icon--color-sun"><use xlink:href="images/icons.svg#svg-no-answer"/></svg>
                       <span class="c-options__text t-text--light">No sunlight</span>
+                      <input type="radio" name="sunValue" value="no" class="c-options__input">
                     </div>
                   </div>
                 </div>
@@ -115,6 +118,7 @@
                     <div class="o-panel c-options__panel">
                       <svg class="c-options__icon o-icon o-icon--2x"><use xlink:href="images/icons.svg#svg-one-drop"/></svg>
                       <span class="c-options__text t-text--light">Rarely</span>
+                      <input type="radio" name="waterValue" value="rarely" class="c-options__input">
                     </div>
                   </div>
                   <div class="c-options__item c-options__item--has-icon">
@@ -123,6 +127,7 @@
                         <svg class="c-options__icon o-icon o-icon--2x c-options__icon"><use xlink:href="images/icons.svg#svg-two-drops"/></svg>
                       </span>
                       <span class="c-options__text t-text--light c-options__text">Regularly</span>
+                      <input type="radio" name="waterValue" value="regularly" class="c-options__input">
                     </div>
                   </div>
                   <div class="c-options__item c-options__item--has-icon">
@@ -131,6 +136,7 @@
                         <svg class="c-options__icon o-icon o-icon--2x o-icon--color-sun"><use xlink:href="images/icons.svg#svg-three-drops"/></svg>
                       </span>
                       <span class="c-options__text t-text--light">Daily</span>
+                      <input type="radio" name="waterValue" value="daily" class="c-options__input">
                     </div>
                   </div>
                 </div>
@@ -183,12 +189,14 @@
                     <div class="o-panel c-options__panel">
                       <svg class="c-options__icon o-icon o-icon--2x"><use xlink:href="images/icons.svg#svg-pet"/></svg>
                       <span class="c-options__text t-text--light">Yes</span>
+                      <input type="radio" name="petsValue" value="true" class="c-options__input">
                     </div>
                   </div>
                   <div class="c-options__item c-options__item--has-icon">
                     <div class="o-panel c-options__panel">
                       <svg class="c-options__icon o-icon o-icon--2x c-options__icon"><use xlink:href="images/icons.svg#svg-no-answer"/></svg>
                       <span class="c-options__text t-text--light c-options__text">No/They don’t care</span>
+                      <input type="radio" name="petsValue" value="false" class="c-options__input">
                     </div>
                   </div>
                 </div>
@@ -230,173 +238,12 @@
 
           </div>
           <div class="o-catalog__grid">
-            <div class="o-catalog__grid__container">
-
-              <article class="c-card o-catalog__grid__item">
-                <div class="c-card__container">
-                  <figure class="c-card__figure">
-                    <img src="../assets/images/succulent-bowl.jpg" alt="" class="c-card__image">
-                  </figure>
-                  <h3 class="c-card__title t-text--bold">Succulent bowl</h3>
-                  <div class="c-card__wrap">
-                    <div class="c-card__price t-text--light">$30</div>
-                    <ul class="c-card__warnings">
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid"><use xlink:href="images/icons.svg#svg-high-sun" /></svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid"><use xlink:href="images/icons.svg#svg-pet" /></svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid"><use xlink:href="images/icons.svg#svg-toxic" /></svg>
-                      </li>
-                    </ul>
-                  </div>
-                  <button class="c-btn c-btn--default c-btn--full c-card__button">buy now</button>
-                </div>
-              </article>
-
-              <article class="c-card o-catalog__grid__item">
-                <div class="c-card__container">
-                  <figure class="c-card__figure">
-                    <img src="../assets/images/succulent-bowl.jpg" alt="" class="c-card__image">
-                  </figure>
-                  <h3 class="c-card__title t-text--bold">Succulent bowl</h3>
-                  <div class="c-card__wrap">
-                    <div class="c-card__price t-text--light">$30</div>
-                    <ul class="c-card__warnings">
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-no-answer" /></svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-low-sun" /></svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-three-drops" /></svg>
-                      </li>
-                    </ul>
-                  </div>
-                  <button class="c-btn c-btn--default c-btn--full c-card__button">buy now</button>
-                </div>
-              </article>
-
-              <article class="c-card o-catalog__grid__item">
-                <div class="c-card__container">
-                  <figure class="c-card__figure">
-                    <img src="../assets/images/succulent-bowl.jpg" alt="" class="c-card__image">
-                  </figure>
-                  <h3 class="c-card__title t-text--bold">Succulent bowl</h3>
-                  <div class="c-card__wrap">
-                    <div class="c-card__price t-text--light">$30</div>
-                    <ul class="c-card__warnings">
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-one-drop" /></svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-toxic" /></svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-two-drops" /></svg>
-                      </li>
-                    </ul>
-                  </div>
-                  <button class="c-btn c-btn--default c-btn--full c-card__button">buy now</button>
-                </div>
-              </article>
-              <article class="c-card o-catalog__grid__item">
-                <div class="c-card__container">
-                  <figure class="c-card__figure">
-                    <img src="../assets/images/succulent-bowl.jpg" alt="" class="c-card__image">
-                  </figure>
-                  <h3 class="c-card__title t-text--bold">Succulent bowl</h3>
-                  <div class="c-card__wrap">
-                    <div class="c-card__price t-text--light">$30</div>
-                    <ul class="c-card__warnings">
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-one-drop" />
-                        </svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-toxic" />
-                        </svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-two-drops" />
-                        </svg>
-                      </li>
-                    </ul>
-                  </div>
-                  <button class="c-btn c-btn--default c-btn--full c-card__button">buy now</button>
-                </div>
-              </article>
-              <article class="c-card o-catalog__grid__item" data-js-slider>
-                <div class="c-card__container">
-                  <figure class="c-card__figure">
-                    <img src="../assets/images/succulent-bowl.jpg" alt="" class="c-card__image">
-                  </figure>
-                  <h3 class="c-card__title t-text--bold">Succulent bowl</h3>
-                  <div class="c-card__wrap">
-                    <div class="c-card__price t-text--light">$30</div>
-                    <ul class="c-card__warnings">
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-one-drop" />
-                        </svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-toxic" />
-                        </svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-two-drops" />
-                        </svg>
-                      </li>
-                    </ul>
-                  </div>
-                  <button class="c-btn c-btn--default c-btn--full c-card__button">buy now</button>
-                </div>
-              </article>
-              <article class="c-card o-catalog__grid__item">
-                <div class="c-card__container">
-                  <figure class="c-card__figure">
-                    <img src="../assets/images/succulent-bowl.jpg" alt="" class="c-card__image">
-                  </figure>
-                  <h3 class="c-card__title t-text--bold">Succulent bowl</h3>
-                  <div class="c-card__wrap">
-                    <div class="c-card__price t-text--light">$30</div>
-                    <ul class="c-card__warnings">
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-one-drop" />
-                        </svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-toxic" />
-                        </svg>
-                      </li>
-                      <li class="c-card__warnings__item">
-                        <svg class="o-icon o-icon--fluid">
-                          <use xlink:href="images/icons.svg#svg-two-drops" />
-                        </svg>
-                      </li>
-                    </ul>
-                  </div>
-                  <button class="c-btn c-btn--default c-btn--full c-card__button">buy now</button>
-                </div>
-              </article>
-
+            <div
+              class="o-catalog__grid__container"
+              ref="catalog-list"
+              data-js-slider
+              data-js-slider-width-unit="320"
+              data-js-slider-space-between="20">
             </div>
           </div>
         </div>

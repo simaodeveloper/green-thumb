@@ -3,6 +3,9 @@ import CatalogController from './CatalogController';
 
 export default class CatalogControllerAdapter {
   constructor(...parameters) {
-    return new CatalogController(...parameters, new CatalogView());
+    return new CatalogController(
+      ...parameters,
+      new CatalogView()
+    );
   }
 }

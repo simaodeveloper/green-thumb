@@ -7,3 +7,5 @@ export const getClosestElementByAttribute = (element, attribute) => {
     ? element
     : getClosestElementByAttribute(element.parentNode, attribute);
 }
+
+export const renderDOM = (htmlString, target) => target.innerHTML = htmlString;
