@@ -1,4 +1,5 @@
 import Step from '../../libraries/Step';
+import Validate from '../../libraries/Validade';
 
 import { getElements, renderDOM, breakLineByIndex } from '../../utils';
 import { getIconName } from '../_helpers';
@@ -7,7 +8,18 @@ export default class ProductView extends Step.View {
   init() {
     this.ui = {
       productItem: getElements('[data-js-product]')[0],
+      form: getElements('[data-js-form]')[0]
     }
+
+    new Validate({
+      form: this.ui.form,
+      rules: {
+
+      },
+      options: {
+        submitDefault: false
+      }
+    });
   }
 
   getProductTemplateMap(products) {

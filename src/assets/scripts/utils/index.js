@@ -25,3 +25,5 @@ export const breakLineByIndex = (str, index = 1, tag = '<br />') => {
     .concat(tag, strSplited.slice(index))
     .join(' ');
 }
+
+export const isObjectEmpty = obj => Object.keys(obj).length === 0;
