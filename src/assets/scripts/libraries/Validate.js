@@ -1,12 +1,12 @@
 import Emitter from './Emitter';
 
-import { isObjectEmpty } from '../utils/';
+import { isObjectEmpty } from '../utils';
 
 const globalOptions = {
   classErrorElement: 'validade--error',
   classErrorMessage: 'validade--message-error',
   tagErrorMessage: 'span',
-  submitDefault: true
+  submitDefault: true,
 };
 
 const createElementErrorMessage = ({
@@ -17,8 +17,8 @@ const createElementErrorMessage = ({
   return `<${tagErrorMessage} class="${classErrorMessage}">${message}</${tagErrorMessage}>`
 };
 
-export default class Validade extends Emitter {
-  constructor({form, rules, options}) {
+export default class Validate extends Emitter {
+  constructor({ form, rules, options}) {
     super();
     this.form = form;
     this.rules = rules;
@@ -32,9 +32,11 @@ export default class Validade extends Emitter {
     this.on('error', (element, error) => {
       const parent = element.parentNode;
 
+      console.log(element, error);
+
       this.isValid = false;
 
-      element.classList.add(this.options.classErrorElement);
+      parent.classList.add(this.options.classErrorElement);
 
       parent.insertAdjacentHTML('afterend',
         createElementErrorMessage({
@@ -87,7 +89,7 @@ export default class Validade extends Emitter {
 
     Object.keys(this.rules).forEach(ruleName => {
       const element = this.getFieldByName(ruleName);
-      const rule = this.getRuleByName(name);
+      const rule = this.getRuleByName(ruleName);
 
       this.executeRuleTest(rule, element);
     });
@@ -103,12 +105,61 @@ export default class Validade extends Emitter {
   }
 
   executeRuleTest(rule, element) {
-    if (!rule.test(element.value)) {
-      this.dispatch('error', element, rule.message);
-      this.rule.isValid = false;
-      return;
+    const ruleValidators = this.getValidatorsByRule(rule);
+
+    for (let ruleName in ruleValidators) {
+      let test = ruleValidators.methods[ruleName];
+
+      if (!test(element.value, rule[ruleName].value)) {
+        console.log(ruleName, rule[ruleName].message)
+        this.dispatch('error', element, rule[ruleName].message);
+      }
+    }
+    // if (!rule.test(element.value)) {
+    //   this.dispatch('error', element, rule.message);
+    //   this.rule.isValid = false;
+    //   return;
+    // }
+
+    // this.rule.isValid = true;
+  }
+
+  getValidatorsByRule(rule) {
+    const newRule = { ...rule};
+    const methodNames = Object.keys(newRule);
+
+    if (!newRule.methods) {
+      Object.defineProperty(newRule, 'methods', {
+        enumerable: false,
+        configurable: true,
+        writable: true,
+        value: {}
+      });
     }
 
-    this.rule.isValid = true;
+    methodNames.forEach(name => {
+      newRule.methods[name] = Validate.methods[name];
+    });
+
+    return newRule;
   }
 }
+
+Validate.patterns = {
+  email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
+};
+
+Validate.methods = {
+  minLength: (value, ruleValue) => {
+    return value >= ruleValue;
+  },
+  maxLength: (value, ruleValue) => {
+    return value <= ruleValue;
+  },
+  required: (value, ruleValue) => {
+    return value !== undefined && value !== null;
+  },
+  pattern: (value, ruleValue) => {
+    return ruleValue.test(value);
+  }
+};

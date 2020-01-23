@@ -1,5 +1,5 @@
 import Step from '../../libraries/Step';
-import Validate from '../../libraries/Validade';
+import Validate from '../../libraries/Validate';
 
 import { getElements, renderDOM, breakLineByIndex } from '../../utils';
 import { getIconName } from '../_helpers';
@@ -14,7 +14,26 @@ export default class ProductView extends Step.View {
     new Validate({
       form: this.ui.form,
       rules: {
-
+        fullname: {
+          required: {
+            value: true,
+            message: 'Please, you need to inform a fullname!'
+          },
+          minLength: {
+            value: 2,
+            message: 'Your name have to be at least 2 characters!'
+          }
+        },
+        email: {
+          required: {
+            value: true,
+            message: 'Please, you need to inform a email!'
+          },
+          pattern: {
+            value: Validate.patterns.email,
+            message: 'Please, you need to inform a valid email!'
+          }
+        }
       },
       options: {
         submitDefault: false
