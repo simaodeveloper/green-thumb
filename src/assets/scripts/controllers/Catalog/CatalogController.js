@@ -2,6 +2,7 @@ import Step from '../../libraries/Step';
 import api from '../../API';
 
 import { getClosestElementByClass } from '../../utils';
+import { getIconName, prepareProductsToDisplay } from '../_helpers';
 
 export default class CatalogController extends Step {
   constructor(step, steps, stage, view) {
@@ -11,28 +12,44 @@ export default class CatalogController extends Step {
 
   enter(direction) {
     super.enter(direction);
+    this.mountCards();
+  }
 
+  mountCards() {
     const params = this.getParamsFromSurvey();
 
     api.getProductListByParams(params)
-      .then(response => this.view.transformDataToDisplay(response))
+      .then(response => this.savePlants(response))
+      .then(response => this.transformDataToDisplay(response))
       .then(productList => this.view.getCardsTemplatesMap(productList))
       .then(htmlString => this.view.renderCards(htmlString))
       .then(() => this.view.sliderSetup());
   }
 
-  leave(direction) {
-    super.leave(direction);
-  }
-
   loadEvents() {
     this.view.ui.catalogList.addEventListener('click', event => {
       const cardButton = getClosestElementByClass(event.target, 'c-card__button');
-      console.log(cardButton)
+
       if (cardButton) {
-        console.log('plant id', cardButton.dataset.plantId);
+        const { plantId } = cardButton.dataset;
+
+        this.stage.next({
+          plantId
+        })
       }
     });
+  }
+
+  transformDataToDisplay(productList) {
+    return prepareProductsToDisplay(productList);
+  }
+
+  savePlants(response) {
+    const state = {...this.step.state};
+    state.plants = response;
+    this.stage.setCurrentStepState(state);
+    return state.plants;
+
   }
 
   getParamsFromSurvey() {

@@ -9,6 +9,6 @@ export default class HomeController extends Step {
   init() {
     const newState = { ...this.step.state };
     newState.started = true;
-    this.stage.setStepState(newState);
+    this.stage.setCurrentStepState(newState);
   }
 }

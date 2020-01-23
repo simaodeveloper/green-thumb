@@ -1,6 +1,6 @@
 import Step from '../../libraries/Step';
 import { getElements } from '../../utils';
-import { optionActiveHandler } from '../helpers';
+import { optionActiveHandler } from '../_helpers';
 
 export default class WaterView extends Step.View {
   init() {

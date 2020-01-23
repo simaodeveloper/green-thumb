@@ -28,6 +28,10 @@
 
   &__image {
     margin: auto;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin: initial;
+    }
   }
 
   &__warnings {

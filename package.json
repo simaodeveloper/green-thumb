@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "clear:dist": "rm -rf ./dist",
-    "build:dev": "yarn run clear:dist && webpack-dev-server --open --port 5002 --sourceMap",
+    "watch:dev": "yarn run clear:dist && webpack-dev-server --open --port 5002",
     "build:dist": "yarn run clear:dist && webpack --mode production"
   },
   "devDependencies": {

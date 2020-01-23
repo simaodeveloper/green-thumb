@@ -1,8 +1,12 @@
-import { getElements, renderDOM } from '../../utils';
+import Step from '../../libraries/Step';
 
 import Is from '../../libraries/Is';
 
-import Step from '../../libraries/Step';
+import {
+  getElements,
+  renderDOM,
+  stripTags
+} from '../../utils';
 
 export default class CatalogView extends Step.View {
   init() {
@@ -30,8 +34,8 @@ export default class CatalogView extends Step.View {
             <ul class="c-card__warnings">
               ${
                 warnings.map(warning => `
-                  <li class="c-card__warnings__item">
-                    <svg class="o-icon o-icon--fluid"><use xlink:href="images/icons.svg#svg-${warning}" /></svg>
+                  <li class="c-card__warnings__item o-icon--${warning.icon}" title="${stripTags(warning.text)}">
+                    <svg class="o-icon o-icon--fluid"><use xlink:href="images/icons.svg#svg-${warning.icon}" /></svg>
                   </li>
                 `).join('')
               }
@@ -41,28 +45,6 @@ export default class CatalogView extends Step.View {
         </div>
       </article>
     `;
-  }
-
-  getIconName(value) {
-    // Just for Toxicity
-    const stringValue = value.toString() === 'false' ? 'no' : value.toString();
-
-    return {
-      'high': 'high-sun',
-      'low': 'low-sun',
-      'daily': 'three-drops',
-      'regularly': 'two-drops',
-      'rarely': 'one-drop',
-      'no': 'toxic',
-      'true': 'pet'
-    }[stringValue];
-  }
-
-  transformDataToDisplay(productList) {
-    return productList.map(({ id, name, url, price, sun, water, toxicity }) => {
-      const warnings = [sun, water, toxicity].map(this.getIconName);
-      return { id, name, url, price, warnings };
-    });
   }
 
   getCardsTemplatesMap(productList) {

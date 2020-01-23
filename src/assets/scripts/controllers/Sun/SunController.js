@@ -1,5 +1,5 @@
 import Step from '../../libraries/Step';
-import { optionsHandler } from '../helpers';
+import { optionsHandler } from '../_helpers';
 
 export default class SunController extends Step {
   constructor(step, steps, stage, view) {

@@ -40,46 +40,52 @@ export default class Stage {
     });
   }
 
-  prev() {
-    this.getCurrentStepInstance().leave('prev');
+  hasPrevStep() {
+    return this.currentStep > this.minIndexStep
+  }
 
-    if (this.currentStep <= this.minIndexStep) {
+  prev(params) {
+    this.getCurrentStepInstance(params).leave('prev');
+
+    if (!this.hasPrevStep()) {
       return false;
     }
 
-    if (this.currentStep > this.minIndexStep) {
-      --this.currentStep;
-    }
+    --this.currentStep;
 
-    this.getCurrentStepInstance().enter('prev');
+    this.getCurrentStepInstance(params).enter('prev');
   }
 
-  next() {
-    this.getCurrentStepInstance().leave('next');
+  hasNextStep() {
+    return this.currentStep < this.maxIndexStep;
+  }
 
-    if (this.currentStep >= this.maxIndexStep) {
+  next(params) {
+    this.getCurrentStepInstance(params).leave('next');
+
+    if (!this.hasNextStep()) {
       return false;
     }
 
-    if (this.currentStep < this.maxIndexStep) {
-      ++this.currentStep;
-    }
+    ++this.currentStep;
 
-    this.getCurrentStepInstance().enter('next');
+    this.getCurrentStepInstance(params).enter('next');
   }
 
-  start() {
+  start(params) {
 
-    const stepInstance = this.getCurrentStepInstance();
+    const stepInstance = this.getCurrentStepInstance(params);
 
     if ('start' in stepInstance) {
       stepInstance.start();
     }
   }
 
-  getCurrentStepInstance() {
+  getCurrentStepInstance(params) {
     const step = this.getCurrentStep();
     const Controller = this.getControllerBylabel(step.label);
+
+    this.setParams(step.label, params);
 
     if (!this.stepsInstances) {
       this.stepsInstances = {};
@@ -89,7 +95,25 @@ export default class Stage {
       this.stepsInstances[step.label] = new Controller(step, this.steps, this);
     }
 
+    this.deleteParams(step.label);
+
     return this.stepsInstances[step.label];
+  }
+
+  setParams(label, params) {
+    if (!this.storeParams) {
+      this.storeParams = {};
+    }
+
+    this.storeParams[label] = params;
+  }
+
+  getParams(label) {
+    return this.storeParams[label];
+  }
+
+  deleteParams(label) {
+    delete this.storeParams[label];
   }
 
   getCurrentStep() {
@@ -100,7 +124,11 @@ export default class Stage {
     return this.stepControllers[label];
   }
 
-  setStepState(newState) {
+  setCurrentStepState(newState) {
     this.steps[this.currentStep].state = {...newState};
+  }
+
+  getStepByLabel(label) {
+    return this.steps.find(step => step.label === label);
   }
 }

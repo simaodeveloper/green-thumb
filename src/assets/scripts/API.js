@@ -18,9 +18,9 @@ class API {
     .catch(err => console.error(err));
   }
 
-  getProductById(id) {
+  getProductById(id = 1) {
     return this.HTTP.get({
-      url: `${this.baseUrl}/?plant=${id}`
+      url: `${this.baseUrl}/plant?id=${id}`
     })
     .catch(err => console.error(err));
   }

@@ -16,7 +16,7 @@
         width: 1px;
         border-right: 1px solid #e4e9e7;
         position: absolute;
-        top: 285px;
+        top: 330px;
         bottom: 70px;
         left: 50%;
         transform: translateX(-50%);
@@ -26,12 +26,14 @@
   }
 
   &__logo__image {
+    width: 180px;
+    height: 23px;
 
     @media (min-width: $breakpoint-tablet) {
+      width: 224px;
+      height: 27px;
       max-width: initial;
-      width: 180px;
-      height: 23px;
-      transform: rotate(-90deg) translate(-234px, 11px);
+      transform: rotate(-90deg) translate(-276px, 11px);
       transform-origin: left;
     }
   }

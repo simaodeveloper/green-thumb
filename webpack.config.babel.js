@@ -16,6 +16,7 @@ export default (argv, mode) => ({
     filename: `scripts/[name].[hash:8].js`,
     publicPath: '/',
   },
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -23,6 +24,9 @@ export default (argv, mode) => ({
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            sourceMaps: true
+          }
         },
       },
       {
