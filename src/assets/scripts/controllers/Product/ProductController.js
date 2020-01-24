@@ -19,23 +19,32 @@ export default class ProductController extends Step {
   }
 
   loadEvents() {
+
+    Validate.addMethod('fullname', (value, ruleValue) => {
+      return value.split(/\s/).length >= 2;
+    });
+
     new Validate({
       form: this.view.ui.form,
       rules: {
         name: {
           required: {
             value: true,
-            message: 'Please provide your name!'
+            message: 'This the field name is required!'
           },
           minLength: {
             value: 2,
             message: 'You have to fill at least 2 characters!'
+          },
+          fullname: {
+            value: 2,
+            message: 'Please, fill with your fullname!'
           }
         },
         email: {
           required: {
             value: true,
-            message: 'Please provide an email!'
+            message: 'This the field email is required!'
           },
           pattern: {
             value: Validate.patterns.email,
@@ -54,10 +63,8 @@ export default class ProductController extends Step {
         id: this.params.plantId
       };
 
-      console.log(data);
-
       api.postProduct(data)
-        .then((res) => this.view.showFormMessage(res))
+        .then(response => this.view.showFormMessage(response))
         .catch(err => console.error(err));
 
     });

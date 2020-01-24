@@ -1,23 +1,17 @@
 export default class HTTP {
   static request(options) {
-    const {
-      url = '',
-      method = 'GET',
-      headers = {
-        "Content-Type": "application/json",
+    let settings = {
+      headers: {
+        "Accept": "application/json",
       },
-      mode = 'cors',
-      cache = 'default',
-      body = JSON.stringify({})
-    } = options;
+      mode: 'cors',
+      cache: 'default',
+    };
 
-    return fetch(url, {
-      method,
-      headers,
-      mode,
-      cache,
-    })
-    .then(response => response.json());
+    settings = {...settings, ...options};
+
+    return fetch(settings.url, settings)
+      .then(response => response.json());
   }
 
   static get(options) {
@@ -25,7 +19,10 @@ export default class HTTP {
   }
 
   static post(options) {
-    const settings = { ...options, method: 'POST' };
+    const settings = {
+      ...options,
+      method: 'POST',
+    };
 
     return this.request(settings);
   }

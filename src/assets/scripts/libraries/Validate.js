@@ -31,6 +31,10 @@ export default class Validate extends Emitter {
     this.setCoreEvents();
   }
 
+  static addMethod(methodName, fn) {
+    this.methods[methodName] = fn;
+  }
+
   setCoreEvents() {
 
     this.on('error', (element, error) => {
