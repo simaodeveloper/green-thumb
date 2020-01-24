@@ -51,7 +51,7 @@ https://greenthumb-prod.surge.sh
 
 - Minha idéia era configurar o Travis para fazer Continous Integration e Continuous Deploy, onde eu ajustaria a aplicação para requisitar os assets de outro domínio como a Netlify e a utilizaria como uma CDN.
 
-- Creio que com a minha separação de Controllers eu poderia utilizar lazy-load com dinamic-imports e aumentar o carregamento no first-load;
+- Creio que com a minha separação de Controllers eu poderia utilizar lazy-load com dinamic-imports e aumentar a performance do carregamento no first-load;
 
 - Gostaria de ter melhorado o layout para tablet;
 
