@@ -35,7 +35,7 @@ https://greenthumb-prod.surge.sh
 
 - Gostaria de ter adicionado mais acessibilidade com nas imagems e tooltips em certas imagens, e mais um plus de WAI-ARIA, como a aplicação tem um controle muito grande por parte do javascript ajudaria muito;
 
-- Gostaria de ter melhorado a aplicação para SEO utilizando JSON-LD, para pelo o schema de Website e das plantas como Produtos;
+- Gostaria de ter melhorado a aplicação para SEO utilizando JSON-LD, para pelo o schema de Website e das plantas como Produtos, sitemap e robots.txt (eu hospedei o site no dominio da surge, eles bloqueiam os sites de crawlers por padrão, por se tratar de um plano grátis);
 
 - Não tenho experiência com PWA, a ideia era implementar neste teste, vou fazer isso mais para frente;
 
