@@ -4,7 +4,7 @@ export default class HTTP {
       url = '',
       method = 'GET',
       headers = {
-        "Accept": "application/json"
+        "Content-Type": "application/json",
       },
       mode = 'cors',
       cache = 'default',
@@ -15,7 +15,7 @@ export default class HTTP {
       method,
       headers,
       mode,
-      cache
+      cache,
     })
     .then(response => response.json());
   }

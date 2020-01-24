@@ -1,10 +1,10 @@
 import Emitter from './Emitter';
 
-import { isObjectEmpty } from '../utils';
+import { isObjectEmpty, getElements } from '../utils';
 
 const globalOptions = {
-  classErrorElement: 'validade--error',
-  classErrorMessage: 'validade--message-error',
+  classErrorElement: 'validate--error',
+  classErrorMessage: 'validate--message-error',
   tagErrorMessage: 'span',
   submitDefault: true,
 };
@@ -14,7 +14,11 @@ const createElementErrorMessage = ({
   classErrorMessage,
   message
 }) => {
-  return `<${tagErrorMessage} class="${classErrorMessage}">${message}</${tagErrorMessage}>`
+  return `
+    <${tagErrorMessage} class="${classErrorMessage}">
+      <svg class="o-icon o-icon--micro"><use xlink:href="images/icons.svg#svg-exclamation-circle-solid"/></svg>
+      <span class="${classErrorMessage}-text">${message}</span>
+    </${tagErrorMessage}>`
 };
 
 export default class Validate extends Emitter {
@@ -23,22 +27,18 @@ export default class Validate extends Emitter {
     this.form = form;
     this.rules = rules;
     this.options = {...globalOptions, ...options};
-    this.isValid = true;
 
     this.setCoreEvents();
   }
 
   setCoreEvents() {
+
     this.on('error', (element, error) => {
       const parent = element.parentNode;
 
-      console.log(element, error);
-
-      this.isValid = false;
-
       parent.classList.add(this.options.classErrorElement);
 
-      parent.insertAdjacentHTML('afterend',
+      parent.insertAdjacentHTML('beforeend',
         createElementErrorMessage({
           tagErrorMessage: this.options.tagErrorMessage,
           classErrorMessage: this.options.classErrorMessage,
@@ -47,21 +47,38 @@ export default class Validate extends Emitter {
       );
     });
 
+    this.on('valid', element => {
+      const parent = element.parentNode;
+
+      parent.classList.remove(this.options.classErrorElement);
+
+      this.removeMessageError(parent);
+    });
+
     this.on('formSubmit', elements => {});
 
     this.form.addEventListener('submit', event => {
-      if (!this.isValid) {
-        event.preventDefault();
-      }
+      event.preventDefault();
 
       this.validate();
 
-      if (!this.options.submitDefault) {
-        event.preventDefault();
-        this.dispatch('formSubmit', this.getFields());
+      if (this.isValid()) {
+        this.dispatch('formSubmit');
       }
-
     });
+  }
+
+  isValid() {
+    const ruleNames = Object.keys(this.rules);
+    return ruleNames.every(name => this.rules[name].isValid);
+  }
+
+  removeMessageError(context) {
+    const errorMessages = getElements(`.${this.options.classErrorMessage}`, context);
+
+    if (errorMessages && errorMessages.length > 0) {
+      errorMessages.forEach(messageEl => messageEl.remove());
+    }
   }
 
   getFieldName(element) {
@@ -84,7 +101,7 @@ export default class Validate extends Emitter {
     const elements = this.getFields();
 
     if (isObjectEmpty(this.rules)) {
-      throw new Error('Please you have to insert some rules to validade the form!');
+      throw new Error('Please you have to insert some rules to validate the form!');
     }
 
     Object.keys(this.rules).forEach(ruleName => {
@@ -107,21 +124,29 @@ export default class Validate extends Emitter {
   executeRuleTest(rule, element) {
     const ruleValidators = this.getValidatorsByRule(rule);
 
+    this.removeMessageError(element.parentNode);
+
     for (let ruleName in ruleValidators) {
+
+      if (!rule.isValid !== undefined) {
+        Object.defineProperty(rule, 'isValid', {
+          enumerable: false,
+          configurable: true,
+          writable: true,
+          value: true
+        });
+      }
+
       let test = ruleValidators.methods[ruleName];
 
-      if (!test(element.value, rule[ruleName].value)) {
-        console.log(ruleName, rule[ruleName].message)
+      if (test(element.value, rule[ruleName].value)) {
+        rule.isValid = true;
+        this.dispatch('valid', element);
+      } else {
+        rule.isValid = false;
         this.dispatch('error', element, rule[ruleName].message);
       }
     }
-    // if (!rule.test(element.value)) {
-    //   this.dispatch('error', element, rule.message);
-    //   this.rule.isValid = false;
-    //   return;
-    // }
-
-    // this.rule.isValid = true;
   }
 
   getValidatorsByRule(rule) {
@@ -138,7 +163,9 @@ export default class Validate extends Emitter {
     }
 
     methodNames.forEach(name => {
-      newRule.methods[name] = Validate.methods[name];
+      if (!newRule.methods[name]) {
+        newRule.methods[name] = Validate.methods[name];
+      }
     });
 
     return newRule;
@@ -146,20 +173,18 @@ export default class Validate extends Emitter {
 }
 
 Validate.patterns = {
-  email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
+  email: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
 };
 
 Validate.methods = {
   minLength: (value, ruleValue) => {
-    return value >= ruleValue;
-  },
-  maxLength: (value, ruleValue) => {
-    return value <= ruleValue;
+    return value.length >= ruleValue;
   },
   required: (value, ruleValue) => {
-    return value !== undefined && value !== null;
+    return value.length > 0;
   },
   pattern: (value, ruleValue) => {
+    // console.log(value);
     return ruleValue.test(value);
   }
 };

@@ -27,3 +27,10 @@ export const breakLineByIndex = (str, index = 1, tag = '<br />') => {
 }
 
 export const isObjectEmpty = obj => Object.keys(obj).length === 0;
+
+export const getValuesFromFormAsObject = form => Array.from(form.elements).reduce((obj, element) => {
+  if (element.nodeName !== 'BUTTON') {
+    obj[element.getAttribute('name')] = element.value;
+  }
+  return obj;
+}, {});

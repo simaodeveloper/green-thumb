@@ -5,7 +5,7 @@ export default class Emitter {
 
   on(event, fn) {
     if (!this.events[event]) {
-      this.events[event] = [fn];
+      return (this.events[event] = [fn]);
     }
 
     this.events[event].push(fn);

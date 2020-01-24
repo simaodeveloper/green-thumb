@@ -41,10 +41,10 @@
   }
 
   &__field {
-    margin-bottom: 30px;
+    margin-top: 30px;
 
-    &:last-of-type {
-      margin-bottom: 35px;
+    &:first-of-type {
+      margin-top: 0;
     }
   }
 
@@ -63,6 +63,8 @@
   }
 
   &__submit {
+    margin-top: 35px;
+
     @media (min-width: $breakpoint-tablet) {
       @include button-dimension(184px, 55px);
       @include button-style(

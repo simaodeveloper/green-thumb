@@ -1,44 +1,58 @@
-#### 10/01/2020 - Proof of Concept
+# GreenThumb
 
-- Criei uma POC para definir a arquitetura da aplicação, onde haverá um Stage
-  que controlará os Steps, cada Step terá seu próprio Controller e View. O Model será um State que é passado na criação da
-  instancia do Stage e a cada Step ativo ele terá acesso ao seu State + todos os Steps + o controle do Stage (tudo via parametro);
+## Como rodar este projeto
 
-- Para testar rápidamente utilizei o atributo type com o novo valor module para utilizar ES6 Modules e deixar o mais próximo para implementar com Webpack;
+##### Rodando o modo de desenvolvimento
 
-#### 11/01/2020 - Layout
 
-- Criei 2 dominios no surge.sh, um para produção, outro para QA. Ambos
-  com HTTPS habilitado.
+```
+  yarn run watch:dev
+```
 
-  - Production: https://greenthumb-prod.surge.sh
+##### Gerando o pacote para deploy
 
-  - Testes: https://greenthumb-qa.surge.sh
+```
+  yarn run build:dist
+```
 
-- Iniciei o desenvolvimento do layout utilizando custom properties ao invés de trabalhar
-  com um pre-processador, apenas para organizar as cores do tema do projeto.
+## Link da Aplicação
 
-#### 13/01/2020 - Modules
+https://greenthumb-prod.surge.sh
 
-- Implementei o webpack para trabalhar com módulos, utilizar ES6 Modules no Javascript,
-  Aplicar ITCSS e BEM para organizar a arquitetura CSS junto com SASS, com isso adiciono escalabilidade prevendo que o projeto cresça com o tempo
-  e manutebilidade para facilitar a manutenção pela equipe ou nossos membros da equipe.
+## Observações
 
-#### 14/01/2020 - Mobile First
+- No primeiro momento foquei em criar uma arquitetura onde tudo funciona como um palco (Stage) onde executamos Passos (Steps), a cada avanço o Stage é responsável por navegar entre os Steps;
 
-- Adicionei um plugin para gerar o sprite dos svgs que usarei como icone, isso me dará mais flexibilidade e poderei utilizar os icones facilmente.
+- Havia pensado em criar animações de transição não não consegui realizar a tempo;
 
-https://deviceatlas.com/blog/most-popular-smartphones
+- Utilizei SASS com ITCSS para organizar os estilos, e fica até mais fácil de aplicar crítical CSS para aumentar a performance no first-load;
 
-### Roadmap
+- Configurei o Webpack para modularizar a aplicação, utilizando ES Modules.
 
-- [ ] Javascript Consistente (ESLint, Prettier and Airbnb Style Guide)
-- [X] Arquitetura CSS (ITCSS + BEM)
-- [X] Modules (Webpack)
-- [ ] Unit Test (Jest)
-- [ ] Performance (lazy-load, Audits, gtmetrix)
-- [ ] Integration Test (Cypress)
-- [ ] CI / CD (Travis CI)
-- [ ] PWA
-- [ ] Modular HTML (https://github.com/sagold/handlebars-webpack-plugin)
-- [ ] Acessibilidade e SEO (WAI-ARIA e JSON-LD);
+- Tentei modularizar o HTML mas tive problemas com o plugin do Handlebars;
+
+- Tive imprevistos durante o desenvolvimento do teste, então foquei em terminar a aplicação, mas eu queria ter configurado Linters, realizados Testes Unitários com JEST e de Integração com CYPRESS;
+
+- Gostaria de ter adicionado mais acessibilidade com nas imagems e tooltips em certas imagens, e mais um plus de WAI-ARIA, como a aplicação tem um controle muito grande por parte do javascript ajudaria muito;
+
+- Gostaria de ter melhorado a aplicação para SEO utilizando JSON-LD, para pelo o schema de Website e das plantas como Produtos;
+
+- Não tenho experiência com PWA, a ideia era implementar neste teste, vou fazer isso mais para frente;
+
+- Gostaria de ter adicionado um plugin de Autoprefixer via PostCSS para ajudar na compatibilidade dos browsers;
+
+- Em relação ao Cross-Browser, eu foquei no Chrome, mas após terminado o principal a idéia era testar nos demais browsers que eu defini como escopo e ir ajustando conforme encontra-se certos bugs;
+
+- Eu Escrevi todo o Javascript da Aplicação, todas as Bibliotecas são de minha autoria;
+
+- Não sei por que o POST final estava dando Erro 422, sendo que repeti a requisição via POSTMAN e executou corretamente retornando status 200 com um objeto vazio no corpo: {}
+
+- Gostaria de ter adicionado lazy-load nas imagens/conteúdo dinâmico e um loader
+
+- Minha idéia era configurar o Travis para fazer Continous Integration e Continuous Deploy, onde eu ajustaria a aplicação para requisitar os assets de outro domínio como a Netlify e a utilizaria como uma CDN.
+
+- Creio que com a minha separação de Controllers eu poderia utilizar lazy-load com dinamic-imports e aumentar o carregamento no first-load;
+
+- Gostaria de ter melhorado o layout para tablet;
+
+- Eu trabalho bem com GitFlow, mas como era um teste eu desenvolvi tudo na master;

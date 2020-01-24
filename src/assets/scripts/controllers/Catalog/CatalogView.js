@@ -1,6 +1,6 @@
 import Step from '../../libraries/Step';
 
-import Is from '../../libraries/Is';
+import IsMobile from '../../libraries/IsMobile';
 
 import {
   getElements,
@@ -56,7 +56,7 @@ export default class CatalogView extends Step.View {
   }
 
   sliderSetup() {
-    if (Is.mobile.ANY()) {
+    if (IsMobile.ANY()) {
       const sliderEl = document.querySelector('[data-js-slider]');
 
       const {
