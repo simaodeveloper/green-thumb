@@ -33,7 +33,7 @@ https://greenthumb-prod.surge.sh
 
 - Tive imprevistos durante o desenvolvimento do teste, então foquei em terminar a aplicação, mas eu queria ter configurado Linters, realizados Testes Unitários com JEST e de Integração com CYPRESS;
 
-- Gostaria de ter adicionado mais acessibilidade com nas imagems e tooltips em certas imagens, e mais um plus de WAI-ARIA, como a aplicação tem um controle muito grande por parte do javascript ajudaria muito;
+- Gostaria de ter adicionado mais acessibilidade como nas imagens (alt) e tooltips (titles) em certos elementos, e mais um plus de WAI-ARIA, como a aplicação tem um controle muito grande por parte do javascript ajudaria muito;
 
 - Gostaria de ter melhorado a aplicação para SEO utilizando JSON-LD, para pelo o schema de Website e das plantas como Produtos, sitemap e robots.txt (eu hospedei o site no dominio da surge, eles bloqueiam os sites de crawlers por padrão, por se tratar de um plano grátis);
 
