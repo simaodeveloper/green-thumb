@@ -38,6 +38,13 @@
       {
         "props": false
       }
+    ],
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "ignorePackages": true
+      }
     ]
   }
 }
