@@ -26,6 +26,7 @@
   },
   "rules": {
     "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
     "prefer-destructuring": [
       "error",
       {
@@ -41,9 +42,21 @@
     ],
     "import/extensions": [
       "error",
-      "always",
+      "never",
       {
         "ignorePackages": true
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowTernary": true
       }
     ]
   }

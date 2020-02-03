@@ -7,56 +7,57 @@ export const optionsHandler = (context, option) => {
     context.stage.setCurrentStepState(state);
     context.view.setOptionActive(option);
   }
-}
+};
 
 export const optionActiveHandler = (context, optionInput) => {
   const ACTIVE_CLASS = 'is--activated';
   const optionItem = getClosestElementByClass(optionInput, 'c-options__item');
 
-  context.ui.optionItems.forEach(option => option.classList.remove(ACTIVE_CLASS));
+  context.ui.optionItems.forEach(option =>
+    option.classList.remove(ACTIVE_CLASS)
+  );
   optionItem.classList.add(ACTIVE_CLASS);
-}
+};
 
 export const getIconName = value => {
   // Just for Toxicity
   const stringValue = value.toString() === 'false' ? 'no' : value.toString();
 
   return {
-    'high': {
+    high: {
       icon: 'high-sun',
-      text: 'High sunlight'
+      text: 'High sunlight',
     },
-    'low': {
+    low: {
       icon: 'low-sun',
-      text: 'Low sunlight'
+      text: 'Low sunlight',
     },
-    'daily': {
+    daily: {
       icon: 'three-drops',
-      text: 'Water daily'
+      text: 'Water daily',
     },
-    'regularly': {
+    regularly: {
       icon: 'two-drops',
-      text: 'Water regularly'
+      text: 'Water regularly',
     },
-    'rarely': {
+    rarely: {
       icon: 'one-drop',
-      text: 'Water rarely'
+      text: 'Water rarely',
     },
-    'no': {
+    no: {
       icon: 'toxic',
-      text: '<em class="t-text--bold">Beware!</em> Toxic for pets'
+      text: '<em class="t-text--bold">Beware!</em> Toxic for pets',
     },
-    'true': {
+    true: {
       icon: 'pet',
-      text: 'Non-toxic for pets'
-    }
+      text: 'Non-toxic for pets',
+    },
   }[stringValue];
-}
+};
 
-export const prepareProductsToDisplay = productList =>
-  productList.map(({ id, name, url, price, sun, water, toxicity }) => {
+export const prepareProductsToDisplay = productList => {
+  return productList.map(({ id, name, url, price, sun, water, toxicity }) => {
     const warnings = [sun, water, toxicity].map(value => getIconName(value));
-
     return {
       id,
       name,
@@ -66,3 +67,4 @@ export const prepareProductsToDisplay = productList =>
       alt: name,
     };
   });
+};

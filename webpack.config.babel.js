@@ -11,7 +11,7 @@ import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import sass from 'sass';
 
 export default (argv, mode) => ({
-  entry: './src/entry.js',
+  entry: ['@babel/polyfill', './src/entry.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: `scripts/[name].[hash:8].js`,
@@ -47,6 +47,7 @@ export default (argv, mode) => ({
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
           {
             loader: 'sass-loader',
             options: {

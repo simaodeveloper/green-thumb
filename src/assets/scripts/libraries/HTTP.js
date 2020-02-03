@@ -1,29 +1,17 @@
-export default class HTTP {
-  static request(options) {
-    let settings = {
-      headers: {
-        "Accept": "application/json",
-      },
-      mode: 'cors',
-      cache: 'default',
-    };
+// global fetch
+export const request = async (url, options) =>
+  fetch(url, {
+    ...options,
+  });
 
-    settings = {...settings, ...options};
+export const get = async (url, options) =>
+  request(url, {
+    ...options,
+    method: 'GET',
+  });
 
-    return fetch(settings.url, settings)
-      .then(response => response.json());
-  }
-
-  static get(options) {
-    return this.request(options);
-  }
-
-  static post(options) {
-    const settings = {
-      ...options,
-      method: 'POST',
-    };
-
-    return this.request(settings);
-  }
-}
+export const post = async (url, options) =>
+  request(url, {
+    ...options,
+    method: 'POST',
+  });

@@ -1,10 +1,12 @@
 import Step from '../../libraries/Step';
 import api from '../../API';
 
-import { prepareProductsToDisplay } from '../_helpers/';
-import { getValuesFromFormAsObject } from '../../utils/';
+import { prepareProductsToDisplay } from '../_helpers';
+import { getValuesFromFormAsObject } from '../../utils';
 
-import Validate from '../../libraries/Validate';
+import { Validator, checkers } from '../../libraries/Validator';
+
+const validator = new Validator();
 
 export default class ProductController extends Step {
   constructor(step, steps, stage, view) {
@@ -19,68 +21,57 @@ export default class ProductController extends Step {
   }
 
   loadEvents() {
+    const schema = validator
+      .schema({
+        name: checkers
+          .required({ message: 'Please, provide a name!' })
+          .minLength({
+            condition: 2,
+            message: 'Please, provide at least 2 characters!',
+          })
+          .fullname({
+            condition: 2,
+            message: 'Please, provide your fullname!',
+          })
+          .create(),
+        email: checkers
+          .required({ message: 'Please, provide a email!' })
+          .email({ message: 'Please, provide a correct email!' })
+          .create(),
+      })
+      .on('valid', (name, ruleName) =>
+        this.view.handlerValidField(name, ruleName)
+      )
+      .on('error', (name, ruleName, error) =>
+        this.view.handlerInvalidField(name, ruleName, error)
+      )
+      .on('success', () => {
+        api
+          .postProduct({
+            ...getValuesFromFormAsObject(this.view.ui.form),
+            id: this.params.plantId,
+          })
+          .then(response => this.view.showFormMessage(response))
+          .catch(err => console.error(err));
+      });
 
-    Validate.addMethod('fullname', (value, ruleValue) => {
-      return value.split(/\s/).length >= 2;
-    });
-
-    new Validate({
-      form: this.view.ui.form,
-      rules: {
-        name: {
-          required: {
-            value: true,
-            message: 'This the field name is required!'
-          },
-          minLength: {
-            value: 2,
-            message: 'You have to fill at least 2 characters!'
-          },
-          fullname: {
-            value: 2,
-            message: 'Please, fill with your fullname!'
-          }
-        },
-        email: {
-          required: {
-            value: true,
-            message: 'This the field email is required!'
-          },
-          pattern: {
-            value: Validate.patterns.email,
-            message: 'Please provide a valid e-mail.!'
-          }
-        }
-      },
-      options: {
-        submitDefault: false
-      }
-    })
-    .on('formSubmit', () => {
-
-      const data = {
-        ...getValuesFromFormAsObject(this.view.ui.form),
-        id: this.params.plantId
-      };
-
-      api.postProduct(data)
-        .then(response => this.view.showFormMessage(response))
-        .catch(err => console.error(err));
-
+    this.view.ui.form.addEventListener('submit', function submitHandler(event) {
+      event.preventDefault();
+      schema.execute(getValuesFromFormAsObject(this));
     });
   }
 
   mountProduct() {
-
-    api.getProductById(this.params.plantId)
+    api
+      .getProductById(this.params.plantId)
       .then(response => this.saveProduct(response))
       .then(response => this.transformDataToDisplay(response))
       .then(products => this.view.getProductTemplateMap(products))
-      .then(htmlString => this.view.renderProduct(htmlString))
+      .then(htmlString => this.view.renderProduct(htmlString));
   }
 
   transformDataToDisplay(product) {
-    return prepareProductsToDisplay([product]);
+    return prepareProductsToDisplay.call(this, [product]);
   }
 
   saveProduct(response) {

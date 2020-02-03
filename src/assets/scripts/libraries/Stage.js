@@ -1,7 +1,4 @@
-import {
-  getElements,
-  getClosestElementByAttribute
-} from '../utils';
+import { getElements, getClosestElementByAttribute } from '../utils';
 
 export default class Stage {
   constructor({
@@ -9,11 +6,11 @@ export default class Stage {
     steps = [],
     initialStep = 0,
     stepControllers = {},
-    canStart = false
+    canStart = false,
   }) {
-    this.el = getElements(el)[0],
+    this.el = getElements(el)[0];
     this.steps = steps;
-    this.currentStep = initialStep;
+    this.currentStepIndex = initialStep;
     this.stepControllers = stepControllers;
     this.canStart = canStart;
 
@@ -31,7 +28,10 @@ export default class Stage {
     */
 
     this.el.addEventListener('click', event => {
-      let element = getClosestElementByAttribute(event.target, 'data-stage-command');
+      const element = getClosestElementByAttribute(
+        event.target,
+        'data-stage-command'
+      );
 
       if (element) {
         const commands = element.dataset;
@@ -41,7 +41,7 @@ export default class Stage {
   }
 
   hasPrevStep() {
-    return this.currentStep > this.minIndexStep
+    return this.currentStepIndex > this.minIndexStep;
   }
 
   prev(params) {
@@ -51,13 +51,15 @@ export default class Stage {
       return false;
     }
 
-    --this.currentStep;
+    this.currentStepIndex -= 1;
 
     this.getCurrentStepInstance(params).enter('prev');
+
+    return this;
   }
 
   hasNextStep() {
-    return this.currentStep < this.maxIndexStep;
+    return this.currentStepIndex < this.maxIndexStep;
   }
 
   next(params) {
@@ -67,13 +69,14 @@ export default class Stage {
       return false;
     }
 
-    ++this.currentStep;
+    this.currentStepIndex += 1;
 
     this.getCurrentStepInstance(params).enter('next');
+
+    return this;
   }
 
   start(params) {
-
     const stepInstance = this.getCurrentStepInstance(params);
 
     if ('start' in stepInstance) {
@@ -117,7 +120,7 @@ export default class Stage {
   }
 
   getCurrentStep() {
-    return this.steps[this.currentStep];
+    return this.steps[this.currentStepIndex];
   }
 
   getControllerBylabel(label) {
@@ -125,7 +128,7 @@ export default class Stage {
   }
 
   setCurrentStepState(newState) {
-    this.steps[this.currentStep].state = {...newState};
+    this.steps[this.currentStepIndex].state = { ...newState };
   }
 
   getStepByLabel(label) {

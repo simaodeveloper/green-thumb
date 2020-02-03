@@ -1,4 +1,4 @@
-import { getElements } from '../utils';
+import StepView from './StepView';
 
 export default class Step {
   constructor(step, steps, stage, view) {
@@ -15,27 +15,13 @@ export default class Step {
     this.view.enter();
   }
 
-  enter(direction) {
+  enter() {
     this.view.enter();
   }
 
-  leave(direction) {
+  leave() {
     this.view.leave();
   }
 }
 
-Step.View = class StepView {
-  init() {}
-
-  setElementByLabel(label) {
-    this.el = getElements(`[data-step-label="${label}"]`)[0];
-  }
-
-  enter() {
-    this.el.classList.add('step--is-active');
-  }
-
-  leave() {
-    this.el.classList.remove('step--is-active');
-  }
-}
+Step.View = StepView;

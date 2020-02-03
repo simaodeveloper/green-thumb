@@ -1,8 +1,6 @@
 import Step from '../../libraries/Step';
-import Validate from '../../libraries/Validate';
 
-import { getElements, renderDOM, breakLineByIndex, getValuesFromFormAsObject } from '../../utils';
-import { getIconName } from '../_helpers';
+import { getElements, renderDOM, breakLineByIndex } from '../../utils';
 
 export default class ProductView extends Step.View {
   init() {
@@ -10,21 +8,30 @@ export default class ProductView extends Step.View {
       productItem: getElements('[data-js-product]')[0],
       form: getElements('[data-js-form]')[0],
       formRequest: getElements('.c-form__request')[0],
-      formMessage: getElements('.c-form__message')[0]
-    }
+      formMessage: getElements('.c-form__message')[0],
+    };
+  }
+
+  static createElementErrorMessage({
+    tagErrorMessage,
+    classErrorMessage,
+    name,
+    ruleName,
+    message,
+  }) {
+    return `
+      <${tagErrorMessage} class="${classErrorMessage}" data-validator-name="${name}" data-validator-rule="${ruleName}">
+        <svg class="o-icon o-icon--micro"><use xlink:href="images/icons.svg#svg-exclamation-circle-solid"/></svg>
+        <span class="${classErrorMessage}-text">${message}</span>
+      </${tagErrorMessage}>
+    `;
   }
 
   getProductTemplateMap(products) {
     return products.map(this.getProductTemplate).join('');
   }
 
-  getProductTemplate({
-    name,
-    price,
-    url,
-    alt,
-    warnings
-  }) {
+  getProductTemplate({ name, price, url, alt, warnings }) {
     return `
       <div class="c-product">
         <div class="c-product__container">
@@ -38,8 +45,9 @@ export default class ProductView extends Step.View {
             <img src="${url}" alt="${alt}" class="c-product__image">
           </figure>
           <ul class="c-product__warnings">
-            ${
-              warnings.map(warning => `
+            ${warnings
+              .map(
+                warning => `
                 <li class="c-product__warnings__item">
                   <span class="c-product__warnings__icon">
                     <svg class="o-icon o-icon--fluid o-icon--${warning.icon}">
@@ -50,8 +58,9 @@ export default class ProductView extends Step.View {
                     ${warning.text}
                   </span>
                 </li>
-              `).join('')
-            }
+              `
+              )
+              .join('')}
           </ul>
         </div>
       </div>
@@ -62,7 +71,47 @@ export default class ProductView extends Step.View {
     renderDOM(htmlString, this.ui.productItem);
   }
 
-  showFormMessage(res) {
+  static removeMessageError(name, ruleName, context) {
+    const errorMessages = getElements(
+      `[data-validator-name="${name}"][data-validator-rule="${ruleName}"]`,
+      context
+    );
+
+    if (errorMessages && errorMessages.length > 0) {
+      errorMessages.forEach(messageEl => messageEl.remove());
+    }
+  }
+
+  handlerInvalidField(name, ruleName, error) {
+    const element = getElements(`[name="${name}"]`, this.ui.form)[0];
+    const parent = element.parentNode;
+
+    ProductView.removeMessageError(name, ruleName, parent);
+
+    parent.classList.add('validate--error');
+
+    parent.insertAdjacentHTML(
+      'beforeend',
+      ProductView.createElementErrorMessage({
+        name,
+        ruleName,
+        tagErrorMessage: 'span',
+        classErrorMessage: 'validate--message-error',
+        message: error,
+      })
+    );
+  }
+
+  handlerValidField(name, ruleName) {
+    const element = getElements(`[name="${name}"]`, this.ui.form)[0];
+    const parent = element.parentNode;
+
+    parent.classList.remove('validate--error');
+
+    ProductView.removeMessageError(name, ruleName, parent);
+  }
+
+  showFormMessage() {
     this.ui.formRequest.classList.add('t-display--hide');
     this.ui.formMessage.classList.add('t-display--show-flex');
   }

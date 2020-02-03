@@ -1,37 +1,55 @@
-import HTTP from './libraries/HTTP';
+import * as http from './libraries/HTTP';
 import * as config from './config';
 
+const METHODS = {
+  GET_PRODUCT_LIST_BY_PARAMS: 'getProductListByParams',
+  GET_PRODUCT_BY_ID: 'getProductById',
+  POST_PRODUCT: 'postProduct',
+};
+
 class API {
-  constructor(HTTP, baseUrl) {
-    this.HTTP = HTTP;
+  constructor(httpClient, baseUrl) {
+    this.http = httpClient;
     this.baseUrl = baseUrl;
+    this.httpHeaders = {
+      'Content-Type': 'application/json, text/html, *.*',
+    };
   }
 
-  getProductListByParams({
+  static transformDataToJSON(response) {
+    if (response.ok && response.status === 200) return response.json();
+    return response;
+  }
+
+  [METHODS.GET_PRODUCT_LIST_BY_PARAMS]({
     sunValue = 'high',
     waterValue = 'rarely',
-    petsValue = 'false'
+    petsValue = 'false',
   }) {
-    return this.HTTP.get({
-      url: `${this.baseUrl}/?sun=${sunValue}&water=${waterValue}&pets=${petsValue}`
-    })
-    .catch(err => console.error(err));
+    return this.http
+      .get(
+        `${this.baseUrl}/?sun=${sunValue}&water=${waterValue}&pets=${petsValue}`,
+        { headers: this.httpHeaders }
+      )
+      .then(response => API.transformDataToJSON(response))
+      .catch(err => err);
   }
 
-  getProductById(id = 1) {
-    return this.HTTP.get({
-      url: `${this.baseUrl}/plant?id=${id}`
-    })
-    .catch(err => console.error(err));
+  [METHODS.GET_PRODUCT_BY_ID](id = 1) {
+    return this.http
+      .get(`${this.baseUrl}/plant?id=${id}`, { headers: this.httpHeaders })
+      .then(response => API.transformDataToJSON(response))
+      .catch(err => err);
   }
 
-  postProduct(data) {
-    return this.HTTP.post({
-      url: this.baseUrl,
-      body: JSON.stringify(data)
-    })
-    .catch(err => console.error(err));
+  [METHODS.POST_PRODUCT](data) {
+    return this.http
+      .post(this.baseUrl, {
+        headers: this.httpHeaders,
+        body: JSON.stringify(data),
+      })
+      .catch(err => err);
   }
 }
 
-export default new API(HTTP, config.API_URL);
+export default new API(http, config.API_URL);
