@@ -49,15 +49,25 @@
   }
 
   &__grid__container {
-    width: 2000px; // adicionar via JS
+    position: relative;
     display: flex;
     padding-bottom: 25px;
     padding-right: 20px;
+
+    .loader {
+      position: relative;
+      right: -10px;
+    }
 
     @media (min-width: $breakpoint-tablet) {
       @include container($width: 960px, $sidepad: 0);
       flex-wrap: wrap;
       margin-bottom: 0;
+
+      .loader {
+        position: static;
+        right: auto;
+      }
     }
   }
 
