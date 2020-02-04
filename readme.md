@@ -15,13 +15,25 @@
   yarn run build:dist
 ```
 
+##### Rodar Testes
+
+```
+  yarn test
+```
+
+##### Realizar deploy no surge
+
+```
+  yarn run deploy
+```
+
 ## Link da Aplicação
 
 https://greenthumb-prod.surge.sh
 
 ## Arquitetura da Aplicação
 
-Foquei em criar uma arquitetura onde tudo funciona como um palco (Stage) onde executamos Passos (Steps), a cada avanço o Stage é responsável por navegar entre os Steps;
+Foquei em criar uma arquitetura onde tudo funciona como um palco (Stage) onde executamos Passos (Steps), a cada avanço o Stage é responsável por navegar entre os Steps, no Stage eu insiro um array de objetos que servem como um state de cada Step, que pode ser acessado pelos Controllers de cada Step;
 
 ### Roadmap
 
@@ -30,7 +42,7 @@ Foquei em criar uma arquitetura onde tudo funciona como um palco (Stage) onde ex
 - [x] ITCSS + BEMCSS para arquitetura escalavel e manutenível
 - [x] PostCSS com plugin do Autoprefixer
 - [x] Corrigir Validação
-- [-] JEST
+- [ ] JEST (**incompleto**)
 - [x] Lazy-load das imagens
 - [ ] Animações de transição
 - [ ] Cross-Browser IE 11
