@@ -29,7 +29,7 @@
 
 ## Link da Aplicação
 
-https://greenthumb-prod.surge.sh
+https://greenthumb2.surge.sh
 
 ## Arquitetura da Aplicação
 
