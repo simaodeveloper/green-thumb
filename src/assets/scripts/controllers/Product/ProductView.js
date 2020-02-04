@@ -1,4 +1,5 @@
 import Step from '../../libraries/Step';
+import Lazy from '../../libraries/Lazy';
 
 import { getElements, renderDOM, breakLineByIndex } from '../../utils';
 
@@ -42,7 +43,7 @@ export default class ProductView extends Step.View {
             $${price}
           </div>
           <figure class="c-product__figure">
-            <img src="${url}" alt="${alt}" class="c-product__image">
+            <img data-src="${url}" alt="${alt}" class="c-product__image">
           </figure>
           <ul class="c-product__warnings">
             ${warnings
@@ -67,8 +68,13 @@ export default class ProductView extends Step.View {
     `;
   }
 
-  renderProduct(htmlString) {
-    renderDOM(htmlString, this.ui.productItem);
+  showProduct() {
+    const product = getElements('.c-product', this.ui.productItem)[0];
+    const images = getElements('img[data-src]', product);
+
+    return Lazy.wait(images).then(() => {
+      product.classList.add('show');
+    });
   }
 
   static removeMessageError(name, ruleName, context) {
@@ -111,8 +117,33 @@ export default class ProductView extends Step.View {
     ProductView.removeMessageError(name, ruleName, parent);
   }
 
+  hideForm(cb) {
+    const transitionendHandler = () => {
+      cb();
+      this.ui.form.removeEventListener('transitionend', transitionendHandler);
+    };
+
+    this.ui.form.addEventListener('transitionend', transitionendHandler);
+    this.ui.form.classList.remove('show');
+  }
+
   showFormMessage() {
     this.ui.formRequest.classList.add('t-display--hide');
     this.ui.formMessage.classList.add('t-display--show-flex');
+
+    const images = getElements('img[data-src]', this.ui.formMessage);
+
+    Lazy.wait(images, { delay: 200 }).then(() => {
+      this.ui.form.classList.add('show');
+    });
+  }
+
+  removeLoader() {
+    const loader = getElements('[ref="loader"]', this.ui.productItem)[0];
+    loader.remove();
+  }
+
+  renderProduct(htmlString) {
+    renderDOM(htmlString, this.ui.productItem);
   }
 }

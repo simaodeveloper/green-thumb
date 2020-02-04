@@ -14,15 +14,19 @@ export default class Checkers {
     return rules;
   }
 
-  add({ name, checker, message }) {
-    this[name] = ({ condition = undefined, message: error }) => {
+  static add({ name, checker, message: error }) {
+    Checkers.prototype[name] = function setRule(options) {
+      const { condition, message } = {
+        condition: undefined,
+        message: '',
+        ...options,
+      };
+
       return this.save({
         name,
-        message: error || message,
+        message: message || error,
         test: checker(condition),
       });
     };
   }
 }
-
-export const checkers = new Checkers();

@@ -1,4 +1,5 @@
 import Step from '../../libraries/Step';
+import Lazy from '../../libraries/Lazy';
 
 import { isAny as isMobile } from '../../libraries/IsMobile';
 
@@ -16,7 +17,7 @@ export default class CatalogView extends Step.View {
       <article class="c-card o-catalog__grid__item">
         <div class="c-card__container">
           <figure class="c-card__figure">
-            <img src="${url}" alt="" class="c-card__image">
+            <img data-src="${url}" alt="" class="c-card__image">
           </figure>
           <h3 class="c-card__title t-text--bold">${name}</h3>
           <div class="c-card__wrap">
@@ -43,12 +44,20 @@ export default class CatalogView extends Step.View {
     `;
   }
 
-  getCardsTemplatesMap(productList) {
-    return productList.map(product => this.getCardTemplate(product)).join('');
+  showCards() {
+    let delay = 100;
+    const cards = getElements('.c-card', this.ui.catalogList);
+    const images = cards.map(card => getElements('img[data-src]', card)[0]);
+    return Lazy.wait(images).then(() => {
+      cards.forEach(card => {
+        delay += 50;
+        setTimeout(() => card.classList.add('show'), delay);
+      });
+    });
   }
 
-  renderCards(htmlString) {
-    renderDOM(htmlString, this.ui.catalogList);
+  getCardsTemplatesMap(productList) {
+    return productList.map(product => this.getCardTemplate(product)).join('');
   }
 
   sliderSetup() {
@@ -67,5 +76,14 @@ export default class CatalogView extends Step.View {
 
       sliderEl.style.width = `${sliderWidth}px`;
     }
+  }
+
+  removeLoader() {
+    const loader = getElements('[ref="loader"]', this.ui.catalogList)[0];
+    loader.remove();
+  }
+
+  renderCards(htmlString) {
+    renderDOM(htmlString, this.ui.catalogList);
   }
 }

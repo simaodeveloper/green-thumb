@@ -29,14 +29,12 @@ Foquei em criar uma arquitetura onde tudo funciona como um palco (Stage) onde ex
 - [x] ES Modules
 - [x] ITCSS + BEMCSS para arquitetura escalavel e manutenível
 - [x] PostCSS com plugin do Autoprefixer
-- [ ] Corrigir Validação
+- [x] Corrigir Validação
+- [-] JEST
+- [x] Lazy-load das imagens
 - [ ] Animações de transição
 - [ ] Cross-Browser IE 11
-- [ ] Organizar Branchs como Gitflow
-- [ ] Ajustar para tablet
-- [ ] Lazy-load das imagens
 - [ ] JSON-LD
 - [ ] WAI-ARIA
-- [ ] JEST E CYPRESS
-- [ ] Deploys de assets em dominio diferenciado
-- [ ] PWA
+- [ ] CYPRESS
+

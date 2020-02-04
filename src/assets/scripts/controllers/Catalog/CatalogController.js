@@ -23,7 +23,11 @@ export default class CatalogController extends Step {
       .then(response => this.savePlants(response))
       .then(response => this.transformDataToDisplay(response))
       .then(productList => this.view.getCardsTemplatesMap(productList))
-      .then(htmlString => this.view.renderCards(htmlString))
+      .then(htmlString => {
+        this.view.removeLoader();
+        this.view.renderCards(htmlString);
+        this.view.showCards();
+      })
       .then(() => this.view.sliderSetup());
   }
 

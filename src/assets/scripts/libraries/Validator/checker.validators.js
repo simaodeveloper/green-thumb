@@ -4,7 +4,7 @@
  * @author Daniel Simão da Silva
  */
 
-import { checkers } from './checker';
+import Checkers from './checker';
 
 const validators = [
   {
@@ -30,8 +30,8 @@ const validators = [
       const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
       return reEmail.test(value);
     },
-    message: 'Please provide a valid e-mail.!',
+    message: 'Please, provide a valid e-mail.!',
   },
 ];
 
-validators.forEach(validator => checkers.add(validator));
+validators.forEach(validator => Checkers.add(validator));

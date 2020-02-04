@@ -2,7 +2,7 @@
  * @author Daniel Simão da Silva
  */
 
-import { checkers } from './checker';
+import Checkers from './checker';
 import './checker.validators';
 
 import Emitter from '../Emitter';
@@ -56,4 +56,4 @@ export default class Validator extends Emitter {
   }
 }
 
-export { Validator, checkers };
+export { Validator, Checkers };

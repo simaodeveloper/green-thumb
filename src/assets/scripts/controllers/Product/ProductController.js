@@ -4,9 +4,10 @@ import api from '../../API';
 import { prepareProductsToDisplay } from '../_helpers';
 import { getValuesFromFormAsObject } from '../../utils';
 
-import { Validator, checkers } from '../../libraries/Validator';
+import { Validator, Checkers } from '../../libraries/Validator';
 
 const validator = new Validator();
+const checkers = new Checkers();
 
 export default class ProductController extends Step {
   constructor(step, steps, stage, view) {
@@ -36,7 +37,7 @@ export default class ProductController extends Step {
           .create(),
         email: checkers
           .required({ message: 'Please, provide a email!' })
-          .email({ message: 'Please, provide a correct email!' })
+          .email()
           .create(),
       })
       .on('valid', (name, ruleName) =>
@@ -51,8 +52,10 @@ export default class ProductController extends Step {
             ...getValuesFromFormAsObject(this.view.ui.form),
             id: this.params.plantId,
           })
-          .then(response => this.view.showFormMessage(response))
-          .catch(err => console.error(err));
+          .then(response => {
+            this.view.hideForm(() => this.view.showFormMessage(response));
+          })
+          .catch(err => err);
       });
 
     this.view.ui.form.addEventListener('submit', function submitHandler(event) {
@@ -67,7 +70,11 @@ export default class ProductController extends Step {
       .then(response => this.saveProduct(response))
       .then(response => this.transformDataToDisplay(response))
       .then(products => this.view.getProductTemplateMap(products))
-      .then(htmlString => this.view.renderProduct(htmlString));
+      .then(htmlString => {
+        this.view.removeLoader();
+        this.view.renderProduct(htmlString);
+        this.view.showProduct();
+      });
   }
 
   transformDataToDisplay(product) {

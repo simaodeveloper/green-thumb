@@ -2,6 +2,12 @@
   padding: 35px 15px;
   background-color: $color-sixth;
   color: $color-fourth;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+
+  &.show {
+    opacity: 1;
+  }
 
   @media (min-width: $breakpoint-tablet) {
     padding: 50px 50px 35px;

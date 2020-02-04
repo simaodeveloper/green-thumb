@@ -34,9 +34,12 @@
   }
 
   &__grid__item {
+    .loader {
+      height: 566px;
+      width: 326px;
+    }
 
     @media (min-width: $breakpoint-tablet) {
-
       &:last-child {
         width: 410px;
       }

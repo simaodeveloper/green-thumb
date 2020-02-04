@@ -1,5 +1,15 @@
 .c-product {
   padding-bottom: 50px;
+  opacity: 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding-bottom: 0px;
+  }
+
+  &.show {
+    opacity: 1;
+    transition: opacity 0.35s ease;
+  }
 
   &__container {
     padding: 0 30px;
@@ -35,7 +45,6 @@
   }
 
   &__warnings {
-
     &__item {
       display: flex;
       align-items: center;

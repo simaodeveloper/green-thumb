@@ -13,7 +13,8 @@
     "import",
     "import-helpers",
     "jest",
-    "prettier"
+    "prettier",
+    "promise"
   ]
   ,
   "globals": {

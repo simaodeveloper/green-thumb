@@ -1,4 +1,12 @@
 .c-card {
+  opacity: 0;
+  transform: translateY(30px);
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
 
   @media (min-width: $breakpoint-tablet) {
     padding: 0 15px;
@@ -79,5 +87,4 @@
       }
     }
   }
-
 }
