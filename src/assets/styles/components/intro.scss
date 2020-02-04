@@ -1,9 +1,10 @@
 .c-intro {
-  background: url(../images/illustration-home-mobile.png) no-repeat 240% 265%;
+  background-repeat: no-repeat;
+  background-position: 240% 265%;
   background-size: 103%;
 
   // Iphone 5 / SE
-  @media (min-width: $breakpoint-mobile-small) and (min-height: $breakpoint-height-iphone5){
+  @media (min-width: $breakpoint-mobile-small) and (min-height: $breakpoint-height-iphone5) {
     background-position: 270% 150%;
   }
 
@@ -17,12 +18,15 @@
     background-position: 270% bottom;
   }
 
+  @media (max-width: $breakpoint-desktop - 1) {
+    background-image: url(../images/illustration-home-mobile.png);
+  }
+
   @media (min-width: $breakpoint-desktop) {
     background-image: url(../images/illustration-home.png);
     background-position: 85% bottom;
     background-size: 50%;
   }
-
 
   &__call-to-action {
     margin-top: 7.5%;

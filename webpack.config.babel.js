@@ -103,6 +103,7 @@ export default (argv, mode) => ({
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'dist', 'index.html'),
       filename: path.join(__dirname, 'dist', 'index.html'),
+      prefetch: true,
       inject: true,
     }),
     new HandlebarsWebpackPlugin({
